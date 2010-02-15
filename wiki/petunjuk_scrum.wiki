@@ -1,0 +1,133 @@
+Scrum guide
+november 2009
+Scrum : Dikembangkan dan dipelihara oleh ken schwaber dan jeff sutherland
+
+PRAKATA
+UMUM
+Scrum dibuat berdasarkan praktek terbaik yang diterima oleh industri, digunakan dan dibuktikan selama pulhan tahun. Scrum adalah teori proses yang sudah dibuktikan secara nyata. Seperti yang disampaikan Jim Coplien kepada Jeff, "Setiap orang akan suka Scrum; Scrum adalah hal yang pasti akan kita lakukan kalau menghadapi rintangan yang berat."
+
+TOKOH
+Dari ribuan orang yang telah berkontribusi terhadap Scrum, kita harus menyebutkan mereka yang berperan besar dalam sepuluh tahun pertama. Pertama adalah Jeff Sutherland yang bekerja bersama Jeff Mckenna dan Ken Schwaber bersama Mike Smith dan Cris Martin. Scrum pertama kali diperkenalkan dan dipublikasikan secara resmi pada OOPSLA 1995. Selama lima tahun berikutnya, Mike Beadle dan Martine Devos memberikan kontribusi yang sangat besar. Dan kemudian semua orang menjadi terlibat, tanpa keterlibatan semua orang Scrum tidak akan bisa menjadi seperti sekrang ini. 
+
+SEJARAH
+Sejarah Scrum bisa dikategorigan cukup panjang di dunia pengembangan perangkat lunak. Untuk menghormati organisasi yang pertama-tama menggunakan dan menyempurnakan Scrum, kita berikan rasa penghargaan pada setiap orang yang terlibat, perusahaan, Fidelity Invesments dan IDX (sekarang GE Medical).
+
+TUJUAN
+Scrum telah digunakan untuk membuat produk yang rumit sejak awal tahun 1990an. Petunjuk ini menerangkan bagaimana menggunakan Scrum untuk membuat produk. Scrum bukan cuma proses atau sebuah teknik untuk membuat produk; tetapi lebih berupa framework dimana kita bisa menerapkan berbagai macam proses dan teknik. Peran dari scrum adalah untuk melihat kemampuan praktek pengembangan perangkat lunak yang kita gunakan sehingga kita bisa tingkatkan dengan cara menyediakan framework dimana sebuah produk yang rumit dapat dibangun. 
+
+TEORI SCRUM
+Scrum, yang disari dari teori pengendalian proses, menggunakan pendekatan yang berulang-ulang dan sedikit-demi-sedikit untuk meningkatkan kemudahan perkiraan dan pengendalian resiko. Tiga pilar Scrum memegang semua implementasi dari pengendalian proses yang sudah teruji.
+
+PILAR PERTAMA ADALAH TRANSPARANSI
+Transparansi menjamin bahwa setiap aspek dalam proses yang memberikan pengaruh terhadap hasil kinerja harus terlihat oleh semua orang yang mengelola hasil kinerja. Tidak hanya hanya sekedar transparan, tetapi yang terlihat juga harus diketahui dengan pasti. Yaitu, ketika seseorang memeriksa proses percaya bahwa sebuah langkah telah selesai dikerjakan; maka keadaan selesai dari langkah tersebut harus sesuai dendan definisi dari apa itu selesai.
+
+PILAR KEDUA ADALAH PEMERIKSAAN
+Berbagaimacam aspek dari proses harus dapat diperiksa sesering mungkin sehingga variasi yang menyimpang dari sebuah proses dapat ditemukan. Frekuensi pemeriksaan harus dipertimbangkan sehingga semua proses dapat dirubah dengan adanya pemeriksaan ini. Masalah pelik muncul ketika frekuensi pemeriksaan melebihi batas toleransi. Untungnya, hal ini tidak lazim dalam pengembangan perangkat lunak. Faktor lain yang penting adalah skill dan kebijaksanaan pihak yang memeriksa hasil kinerja. 
+
+PILAR KETIGA ADALAH PENYESUAIAN (ADAPTASI)
+Jika dari hasil pemeriksaan, pemeriksa menentukan satu atau lebih aspek dari proses yang diluar batas yang ditentukan, dan hasil produk menjadi tidak dapat diterima, pemeriksa harus melakukan penyesuaian proses atau materi yang sedang diproses. Penyesuaian ini harus dibuat secepat mungkin untuk mencegah kerusakan lebih jauh. 
+
+Ada tiga titik pemeriksaan dan penyesuaian dalam Scrum. Rapat Harian Scrum (The Daily Meeting) digunakan untuk memeriksa perkembangan menuju tujuan dari Sprint, dan untuk membuat penyesuaian yang meningkatkan produktifitas di esok hari. Sebagai tambahan, Rapat Pengkajian Ulang dan Perencanaan Sprint (Sprint Review and Planning Meeting), digunakan untuk mengkaji ulang sprint yang telah lalu dan menentukan cara-cara baru yang dapat membuat sprint berikutnya lebih produktif, mencapai target dan sekaligus menyenangkan.
+
+ISI SCRUM
+Framework Scrum terdiri dari kumpulan Tim Scrum dan peran di dalamnya, jangka waktu (time-boxed), Artefak, dan Peraturan. 
+
+Tim Scrum dirancang untuk mengoptimalkan fleksibilitas dan produktifitas; untuk mecapai tujuan tersebut, Tim Scrum haruslah mandiri, bisa mengerjakan berbagai macam hal, dan Tim Scrum bekerja dalam siklus perulangan. Setiap Tim Scrum terdiri dari tiga peran: 1) ScrumMaster, yang bertanggung jawan untuk menjamin proses dipahami dan dipatuhi; 2) Product Owner, yang bertanggung jawab untuk memaksimalkan nilai tambah dari pekerjaan yang dilaksanakan oleh Tim Scrum; dan 3) Tim, yang mengerjakan pekerjaan. Tim terdiri dari beberapa pengembang yang mempunyai kemampuan mengubah kebutuhan Product Owner menjadi produk yang siap diluncurkan pada setiap akhir Sprint.
+
+Scrum menggunakan jangka waktu untuk menciptakan keteraturan. Eleme dari Scrum yang dibuat jangka waktunya adalah Rapat Perencanaan Peluncuran (Release Planning Meeting), Rapat Perencanaan Sprint (Sprint Planning Meeting), Sprint, Rapat Harian (Daily Scrum), Rapat Pengkajian Ulang Sprint (Sprint Review Meeting) dan Sprint Retrospektif. Jantung dari Scrum adalah Sprint, yaitu siklus perulangan dalam jangka waktu satu bulan atau kurang yang dalam satuan tetap selama masa pengembangan perangkat lunak. Semua Spring menggunakan framwork Scrum yang sama, dan semua sprint menghasilkan sedikit-demi-sedikit produk akhir yang siap diluncurkan. Satu sprint dimulai tepat setelah sprint lain selesai. 
+
+Scrum menggunakan empat artefak utama. Produk Backlog adalah daftar yang diberi prioritas dari semua yang dibutuhkan sebuah produk. Sprint Backlog adalah daftar tugas untuk mengubah Product Backlog dalam satu spring menjadi sedikit-demi-sedikit produk akhir yang siap diluncurkan. Burndown berarti jumlah backlog yang masih belum selesai dalam waktu tertentu. Release Burndown mengukur jumlah sprint backlog yang masih tersisa selama jangka waktu satu sprint. 
+
+Peraturan mengikat Jangka Waktu, Peran, dan Artefak. Peraturan-perarturan yang berlaku akan dijelaskan lebih jauh dalam dokumen ini. Sebagai contoh, adalah peraturan Scrum yang menyataka bahwa hanya anggota Tim -Orang-orang yang berkomitmen untuk mengubah Produk Backlog menjadi Produk sebenarnya- yang berhak berbicara dalam Rapat Harian. Cara penerapan Scrum yang tidak termasuk dalam Peraturan tetapi hanya berupa saran akan digambarkan dalam kotak "Tip".
+
+TIP 
+Ketika aturan tidak ditentukan, pengguna scrum diharapkan untuk menentukan sendiri apa yang harus dilakukan. Jangan berusaha membuat solusi yang sempurna, karena masalah-masalah yang dihadapi biasanya berubah secara cepat. Coba saja satu solusi sederhana, dan periksa apakah bisa memecahkan masalah. Mekanisme periksa-dan-sesuaikan (inspect-and-adapt) alami dalam scrum akan membimbing anda dalam hal ini. 
+
+PERAN DALAM SCRUM
+Tim Scrum terdiri dari ScrumMaster, Product Owner dan Tim pengembang. Anggota Tim pengembang disebut "pigs". Selain mereka disebut "chicken". Chicken tidak bisa mengatur bagaimana cara "pigs" mengerjakan tugaska. Chickens and pigs berasar dari sebuah cerita, 
+
+"Seekor Chicken dan Seekor pig sedang dalam satu forum, kemudian chicken bilan "Yuk kita bikin restoran!"
+
+Pig berfikir sebentar dan kemudian bertanya "Apa nama restoranya?"
+Chicken bilang "Ham n' Eggs!"
+Pig bilang "Ah, nggak mau, saya yang mengerjakan, tapi kamu cuma terlibat saja!"
+
+SCRUMMASTER
+ScrumMaster bertanggung jawab untuk menjamin bahwa Tim Scrum menjunjung tinggi nilai-nilai, tindakan dan aturan dalam Scrum. ScrumMaster membantu Tim Scrum dan keseluruhan organisasi dalam mengimplementasikan scrum. ScrumMaster melatih dan membimbing Tim Scrum agar lebih produktif dan menghasilkan produk berkualitas. ScrumMaster membantu Tim Scrum memahami dan menggunakan prinsip kemandiran dan kemampuan untuk mengerjakan berbagai macam hal (cross-functionality).  ScrumMaster juga memmbantu Tim Scrum melakukan yang terbaik dalam lingkungan organisasi yang kemungkinan tidak optimal dan terlalu rumit untuk pengembangan produk. Ketika ScrumMaster membantu perubahan ini, tindakan ini disebut "menyingkirkan penghambat" (removing impediments). Bagaimanapun juga, ScrumMaster tidak menjadi atasan dari Tim Scrum; Tim Scrum harus mandiri. 
+
+TIP
+ScrumMaster bekerja bersama kustomer dan petinggi organisasi untuk mengidentifikasi dan menentukan siapa yang akan menjadi Product Owner. ScrumMaster melatih Product Owner bagaimana menyelesaikan tugasnya. Product Owner diharapkan untuk tahu bagaumana mengelola dan mengoptimisasikan nilai tambah yang dihasilkan menggunakan Scrum. Jika tidak, maka hal itu merupakan kesalahan ScrumMaster. 
+
+TIP
+ScrumMaster bisa saja merangkap menjadi anggota Tim Scrum, misalnya sekaligus sebagai seorang pengembang. Tetapi, kondisi ini sering menimbulkan konflik ketika ScrumMaster harus memilih antara "menyingkirkan masalah" dan melaksanakan tugasnya sebagai pengembang. ScrumMaster tidak boleh merangkap sebagai Product Owner.
+
+PRODUCT OWNER
+Product Owner adalah seseorang dan satu-satunya orang yang bertanggung jawab memelihara Product Backlog dan menjamin bahwa semua pekerjaan Tim memberikan nilai tambah. Product owner mengelola Product Backlog dan memastikan bahwa semua orang dapat melihatnya dengan jelas. Setiap orang tahu item apa yang mempunyai prioritas tertinggi, sehingga setiap orang tahu apa yang harus dikerjakan.
+
+Agar seorang Product Owner menjadi sukses, Setiap orang dalam organisasi harus menghormati keputusanya. Tidak ada satupun orang diijinkan untuk meminta Tim bekerja dalam beberapa set prioritas, dan Tim tidak boleh menggap benar orang lain yang menyatakan sebaliknya. Keputusan Produk Owner haruslah jelas isi dan prioritasnya terhadap Poduk Backlog. Untuk mencapa level kejelasan ini memerlukan usaha terbaik dari Produk Owner, hal ini menjadikan peran Produk Owner sangat menguras usaha sekaligus memberikan kepuasan yang sangat besar. 
+
+TIM
+Tim Scrum (pengembang) mengubah Product Backlog menjadi fungsionalitas yang siap diluncurkan di setiap akhir Sprint. Tim harus bisa mengerjakan segala macam hal (cross functional), anggota Tim haruslah mempunyai semua kemampuan yang dibutuhkan untuk membuat hasil pekerjaan yang baik. Anggota tim biasanya mempunyai sepesialisasi dalam satu skill tertentu, misalnya programming, quality control, business analysis, arsitektur, desain antar muka atau desain database. Bagaimanapun juga kesamaan skill antar Team member - yaitu kemampuan untuk mengubah requirement menjadi produk berguna - lebih penting daripada skill lainya. Anggota tim yang menolak untuk menulis kode hanya karena arsitek atau designer tidak cocok dilibatkan dalam Tim. Semua orang berkontribusi, bahkan jika hal tersebut memaksa anggota Tim belajar sill baru atau mengingat-ingat skill yang sudah lupa. Tidak ada yang namanya gelar dalam Tim, dan tidak ada pengecualian sama sekali dalam Peraturan ini. Tim tidak terdiri dari sub-Tim yang dikhususkan untuk mengerjakan bagian tertentu, walaupun itu adalah testing atau business analysis.
+
+Tim haruslah mandiri (self-organizing). Tidak seorangpun - tidak juga ScrumMaster - bisa mengatur bagaimana Tim mengubah Product Backlog menjadi fungsionalitas yang siap diluncurkan. Tim mencari tahu sendiri. Setiap anggota Tom menggunakan skill dan pengalamanya ke semua masalah yang dihadapi. Sinergi ini akan menghasilkan pernambahan efisiensi dan efektifitas Tim secara keseluruhan. 
+
+Ukuran optimal Tim adalah tujuh orang plus minus dua. Ketika anggota tim berjumlah kurang dari lima, interaksi yang terjadi menjadi berkurang dan akhirnya juga mengurangi produktifitas. Bahkan, Tim kemungkinan akan mengalami keterbatasan skill selama Spring dan pada akhirnya tidak dapat menghasilkan produk yang dapat direlease. Jika terdapat lebih dari sembilan, dengan mudah bisa dipastikan terlalu banyak koordinasi yang diperlukan dalam Tim. Tim berukuran besar menyebabkan terlalu banyak kompleksitas untuk dikelola oleh proses empiris. Tetapi, kami juga menemukan bahwa banyak Tim yang sukses dengan anggota tim yang kurang atau melebihi batas ini. ScrumMaster dan Product Owner tidak diikutkan dalam perhitungan ini, kecuali mereka merangkap jadi anggota Tim. 
+
+Komposisi tim bisa berubah di akhir Sprint. Setiap ada pergantian anggota Tim, maka produktifitas yang diperoleh dari kemandirian akan menghilang. Oleh karena itu, prinsip kehati-hatian harus dijunjung ketika memutuskan untuk mengubah komposisi Tim. 
+
+TIP
+Untuk tujuan pengembangan produk yang bersifat komersial, Product Owner kemungkinan besar adalah product manager. Untuk pengembangan produk yang digunakan internal organisasi, Product Owner bisa saja adalah manager dari divisi bisnis yang sedang diotomatisasi prosesnya. 
+
+TIP
+Produk owner bisa saja merangkap sebagai anggota Tim yang melakukan tugas pengembangan. Tambahan tanggung jawab sebagai pengembang, kemungkinan besar dapat mengurangi kemampuan Product Owner untuk berinteraksi denga  stakeholder. Product Owner tidak boleh merangkap sebagai ScrumMaster
+
+
+JANGKA WAKTU (TIME-BOXES)
+Jangka waktu di dalam Scrum diterapkan ke Rapat Perencanaan Release (Release Planning Meeting), Sprint, Rapat Perencanaan Sprint, Pengkajian Ulang Sprint (Sprint Review), Sprint Retrospective dan Rapat Harian Scrum (Daily Scrum).
+
+RAPAT PERENCANAAN RELEASE (RELEASE PLANNING MEETING)
+Tujuan perencanaan release adalah untuk membuat rencana dan tujuan sehingga Tim Scrum dan bagian lain dalam organisasi bisa mengerti dan berkomunikasi. Perencanaan release menjawab pertanyaan seperti: "Bagaimana kita mengubah visi menjadi sebuah produk yang super dengan cara terbaik?","Bagaimana kita dapat memenuhi atau melampau kepuasan pelanggan dan Return of Investment yang diinginkan?". Rencana release berisi tujuan rellease, prioritas tertinggi Produk Backlog, resiko terbesar, dan fitute serta fungsionalitas produk secara umum yang ada dalam release. Rencana ini juga berisi kemungkinan tanggal release dan harga produk jika tidak ada perubahan berarti dalam produknya. Organisasi dapat memeriksa kemajuan dan membuat perubahan terhadap rencana release dari sprint-ke-sprint.
+
+Perencanaan release bersifat opsional. Jika Tim Scrum mulai bekerja tanpa rapat perencanaan release, akan segera terlihat bahwa tidak adanya rencana release (artefak) akan menjadi penghalang kinerja dan harus segera dipecahkan. Pekerjaan untuk mengeleminir penghalan akan menjadi satu item dalam Product Backlog. 
+
+Produk dibuat sedikit-demi-sedikit dalam siklus perulangan menggunakan Scrum, dimana setiap Sprint dibuat bagian-bagian produk, dimulai dari bagian yang paling penting dan beresiko. Semakin banyak Sprint dilewati produk semakin mendekati yang diinginkan. Ketika produk yang dibangun berada pada posisi yang sudah cukup untuk digunakan, produk direlease.
+
+Sebagian besar Organisasi mempunyai proses untuk menentukan rencana release, dan di setiap proses ini sebagian besar perencanaan dilakukan pada awal pengembangan produk dan tidak berubah seiring dengan waktu. Dalam Perancanaan Release Scrum, garis besar tujuan dan target didefinisikan. Rencana Release Scrum biasanya hanya membutuhkan 15-20% dari waktu yang dibutuhkan untuk membuat Rencana Release tradisional. Tetapi, perencanaan release dalam Scrum dilakukan tepat ketika akan melaksanakan setiap Kajian Ulang Sprint dan Rapat Perencanaan Spring, seperti jugal perencanaan harian dilaksanakan tepat ketika dimulai Rapat Harian Scrum. Secara umum, proses perencanaan release mungkin akan membutuhkan sedikit lebih banyak usaha dibanding proses perencanaan release tradisional.
+
+Perencanaan release memerlukan perkiraan dan prioritas dari setiap item dalam Product Backlog untuk release tersebut. Banyak sekali cara yang dapat digunakan untuk melakukan hal ini, tetapi berada diluar jangkauan pembahasan Scrum, cara-cara ini tidak dapat diragukan lagi sangat bayak manfaatnya.
+
+SPRINT
+Sprint adalah proses perulangan. Spring dilaksanakan dalam jangka waktu tertentu. Selama sprint, ScrumMaster menjamin tidak ada perubahan yang dapat mempengaruhi tujuan dari Sprint. Komposisi Tim dan tujuan tidak berubah selama Sprint berlangsung. Sprint terdiri dari Rapat Perencanaan Sprint, pekerjaan pengembangan, Kajian Ulang Sprint, dan Sprint Retrospective. Sprint muncul silih berganti, dengan tanpa waktu jeda antar sprint.
+
+Sebuah dibuat project untuk mencapai tujuan tertentu; dalam proses pengembangan perangkat lunak, project digunakan untuk membuat produk atau sistem internal. Setiap project terdiri dari definisi apa yang akan dibuat, perencanaan bagaimana proses pembuatanya, pekerjaan apa saja yang perlu dilaksanakan, dan hasil akhir. Setiap project mempunyai horison, dengan kata lain adalah rentang waktu dimana rencana diselesaikan dengan baik. Jika horison terlalu panjang, kemungkinan definisi projek akan berubah, terlalu banyak variabel akan masuk ke dalam project, dan resiko akan membesar pula. Scrum adalah framework untuk project yang panjang horisonya kurang dari satu bulan, dimana kompleksitas yang meningkat karena horison cukup panjang terlalu beresiko untuk Scrum. Keadaan project harus dikontrol setidaknya satu bulan sekali, dan resiko project keluar jalur atau menjadi tidak pasti diatasi setidaknya satu bulan sekali.
+
+Sprint dapat dibatalkan sebelum jangka waktu berakhir. Hanya Product Owner yang mempunyai kekuasaan membatalkan Sprint, walaupun Product Owner melakukan hal itu dibawah pengaruh stakeholder, Tim atau ScrumMaster. Dalam kondisi seperti apa Sprint dapat dibatalkan? Petinggi organisasi mungkin perlu membatalkan Sprint jika tujuan Sprint menjadi tidak relevan. Hal ini dapat terjadi jika perusahaan mengubah arah tujuanya atau pasar mengalami perubahan besar. Pada umumnya, Sprint bisa dibatalkan jika sudah tidak masuk akal lagi untuk diteruskan dalam kondisi tersebut. Tetapi, karena durasi sprint yang pendek, jarang sekali masuk di akal untuk membatalkan Sprint.
+
+Ketika Sprint dibatalkan, setiap Product backlog yang dianggap "selesai" dikaji ulang. Product Backlog tersebut diterima jika berwujud produk yang bisa dipasarkan. Produk backlog yang lain dikembalikan ke asalnya dengan nilai estimasi semula. Settiap pekerjaan yang sudah dikerjakan terhadap Produk Backlog yang belum "selesai" ini diasumsikan hilang. Pembatalan Sprint membuang-buang resource, karena setiap orang harus berkumpul kembali dan memulai Rapat Perencanaan Sprint dari awal untuk memulai Sprint baru. Pembatalan Sprint seringkali meninggalkan trauma dalam Tim, dan sangat tidak lazim untuk membatalkan Sprint.
+
+RAPAT PERENCANAAN SPRINT
+Rapat Perencanaan Sprint adalah saat dimana proses sprint direncanakan. Jangka waktu pelaksanaan rapat ini adalah delapan jam untuk Sprint yang berjangka waktu satu bulan. Untuk sprint yang lebih pendek, alokasikan sekitar 5% dari total jangka waktu pelaksanaan sprint ke rapat ini. Rapat ini terdiri dari dua bagian, bagian pertama berdurasi empat jam digunakan untuk memutuskan apa yang akan diselesaikan dalam Sprint ini. Bagian kedua, berdurasi empat jam juga, adalah waktu dimana Tim mencari cara bagaimana membangun fungsionalitas yang diinginkan ke dalam bagian produk selama Sprint.
+
+Ada dua bagian dalam Rapat Perencanaan Sprint: bagian "Apa?" dan bagian "Bagaimana". Sebagian Tim Scrum mengkombinasikan keduanya dalam satu bagian saja. Di bagian pertama rapat, Tim menjawab pertanyaan "Apa", Product Owner akan memaparkan prioritas dari setiap item dalam Product Backlog kepada Tim. Mereka semua akan bekerja sama untuk menentukan fungsionalitas apa yang akan dibuat dalam Sprint ini. Input dari rapat ini adalah Product Backlog, hasil produk dari Sprint sebelumnya, kapasitas Tim, dan kinerja Tim di sprint sebelumnya. Jumlah product backlog yang akan dikerjakan tergantung sepenuhnya kepada Tim. Hanya Tim yang dapat menentukan apa yang bisa diselesaikan pada sprint ini.
+
+Setelah selesai memilih Product Backlog, tujuan dari sprint ini ditentukan. Tujuan Sprint adalah keadaan yang akan dicapai selama 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
