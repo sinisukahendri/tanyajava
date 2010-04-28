@@ -13,11 +13,10 @@ import java.util.List;
  *
  * @author ifnu
  */
-public interface UserService {
-    void save(User user);
-    void delete(User user);
-    User getUser(Long id);
-    List<User> getUser(int start, int num);
-    List<User> getUser(Badge badge,int start, int num);
+public interface BadgeService {
+    void save(Badge badge);
+    void delete(Badge badge);
+    Badge getBadge(Long id);
+    List<Badge> getBadge(User user, int start, int num);
 
 }
