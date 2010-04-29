@@ -20,6 +20,9 @@ public class IndexController {
 
     @RequestMapping(value="/index",method=RequestMethod.GET)
     public Model index(Model model){
+
+        
+        
         return model;
     }
 
