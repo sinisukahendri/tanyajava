@@ -16,7 +16,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 
@@ -30,7 +30,7 @@ public class Question implements Serializable{
 
     @Id
     @GeneratedValue
-    @Column(name="ID")
+    @Column(name="QUESTION_ID")
     private Long id;
 
     @Column(name="URL",length=255,unique=true)
@@ -45,22 +45,23 @@ public class Question implements Serializable{
 
     @ManyToMany
     @JoinTable(name="QUESTION_CATEGORY",
-        joinColumns=@JoinColumn(name="ID_QUESTION"),
-        inverseJoinColumns=@JoinColumn(name="ID_CATEGORY"))
+        joinColumns=@JoinColumn(name="QUESTION_ID"),
+        inverseJoinColumns=@JoinColumn(name="CATEGORY_ID"))
     private List<Category> categories;
 
     @ManyToMany
     @JoinTable(name="QUESTION_TAGS",
-        joinColumns=@JoinColumn(name="ID_TAGS"),
-        inverseJoinColumns=@JoinColumn(name="ID_TAGS"))
+        joinColumns=@JoinColumn(name="QUESTION_ID"),
+        inverseJoinColumns=@JoinColumn(name="TAG_ID"))
     private List<Tag> tags;
 
-    @OneToMany
-    @JoinColumn(name="ID_USER",referencedColumnName="ID")
+    @ManyToOne
+    @JoinColumn(name="USER_ID",referencedColumnName="USER_ID",nullable=false)
     private User user;
 
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
-    private Date createdDate;
+    @Column(name="DATE_CREATED",updatable=false)
+    private Date createdDate = new Date();
 
     @Column(name="ANSWERED")
     private Boolean answered = Boolean.FALSE;

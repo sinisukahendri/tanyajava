@@ -28,11 +28,11 @@ public class Grp implements Serializable {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name="USER_ASSIGNER_ID")
+    @JoinColumn(name="USER_ASSIGNER_ID",referencedColumnName="USER_ID")
     private User assigner;
 
     @ManyToOne
-    @JoinColumn(name="USER_ASSIGNEe_ID")
+    @JoinColumn(name="USER_ASSIGNEE_ID",referencedColumnName="USER_ID")
     private User assignee;
 
     public User getAssignee() {

@@ -17,7 +17,7 @@
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
 		p:driverClassName="${hibernate.connection.driver_class}"
-        p:url="${hibernate.connection.url}"
+                p:url="${hibernate.connection.url}"
 		p:username="${hibernate.connection.username}"
         p:password="${hibernate.connection.password}" />
 
