@@ -10,8 +10,37 @@ and open the template in the editor.
         <title>TODO supply a title</title>
     </head>
     <body>
-        <p>
-            TODO write content
-        </p>
+
+        <table>
+            <tr>
+                <td></td>
+            </tr>
+        </table>
+        <table>
+            #foreach($question in $questionList)
+            <tr>
+                <td>#if($question.answered)
+                        terjawab
+                    #else
+                        terbuka
+                    #end
+                </td>
+                <td>
+                    <table>
+                        <tr>
+                            <td colspan="3"><a href="$question.url">$question.title</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                #foreach($tag in $question.tags)
+                                    $tag.name 
+                                #end
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            #end
+        </table>
     </body>
 </html>

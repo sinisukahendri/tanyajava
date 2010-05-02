@@ -5,23 +5,40 @@
 
 package com.tanyajava.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 /**
  *
  * @author ifnu
  */
-public class Badge {
+@Entity
+@Table(name="T_BADGE")
+public class Badge implements Serializable {
 
+    @Id
+    @GeneratedValue
+    @Column(name="BADGE_ID")
     private Long id;
 
+    @Column(name="BADGE_NAME",length=25,unique=true)
     private String name;
 
+    @Column(name="ASSIGNED")
     private Long assigned;
 
-    private Date createdDate;
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    private Date createdDate= new Date();
 
+    @ManyToMany(mappedBy="badges")
     private List<User> users;
 
     public List<User> getUsers() {
