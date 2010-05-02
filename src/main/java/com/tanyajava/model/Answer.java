@@ -26,11 +26,11 @@ public class Answer implements Serializable{
 
     @Id
     @GeneratedValue
-    @Column(name="ID")
+    @Column(name="ANSWER_ID")
     private Long id;
 
     @ManyToOne(optional=false)
-    @JoinColumn(name="ID_QUESTION",referencedColumnName="ID")
+    @JoinColumn(name="QUESTION_ID",referencedColumnName="QUESTION_ID")
     private Question question;
 
     @Column(name="VOTED_UP")
@@ -40,7 +40,7 @@ public class Answer implements Serializable{
     private Long votedDown=0l;
 
     @ManyToOne(optional=false)
-    @JoinColumn(name="ID_USER",referencedColumnName="ID")
+    @JoinColumn(name="USER_ID",referencedColumnName="USER_ID")
     private User user;
 
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
