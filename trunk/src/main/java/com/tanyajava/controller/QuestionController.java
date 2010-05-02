@@ -21,7 +21,7 @@ public class QuestionController {
     @RequestMapping(value="/ask",method=RequestMethod.GET)
     public ModelAndView askQuestion(){
         ModelAndView m = new ModelAndView();
-        m.addObject(new QuestionForm());
+        m.addObject("question",new QuestionForm());
         return m;
     }
 
