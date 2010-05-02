@@ -44,7 +44,8 @@ public class Answer implements Serializable{
     private User user;
 
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
-    private Date dateCreated;
+    @Column(name="DATE_CREATED",updatable=false)
+    private Date dateCreated = new Date();
 
     public Date getDateCreated() {
         return dateCreated;

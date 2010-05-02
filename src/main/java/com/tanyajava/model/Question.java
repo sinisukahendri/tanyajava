@@ -36,6 +36,9 @@ public class Question implements Serializable{
     @Column(name="URL",length=255,unique=true)
     private String url;
 
+    @Column(name="TITLE")
+    private String title;
+
     @Lob
     @Column(name="QUESTION")
     private String question;
@@ -46,6 +49,10 @@ public class Question implements Serializable{
         inverseJoinColumns=@JoinColumn(name="ID_CATEGORY"))
     private List<Category> categories;
 
+    @ManyToMany
+    @JoinTable(name="QUESTION_TAGS",
+        joinColumns=@JoinColumn(name="ID_TAGS"),
+        inverseJoinColumns=@JoinColumn(name="ID_TAGS"))
     private List<Tag> tags;
 
     @OneToMany
@@ -123,6 +130,22 @@ public class Question implements Serializable{
 
     public void setViewed(Long viewed) {
         this.viewed = viewed;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
 

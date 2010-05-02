@@ -19,12 +19,12 @@ import javax.persistence.Table;
  * @author ifnu
  */
 @Entity
-@Table(name="T_GRP")
-public class Grp implements Serializable {
+@Table(name="T_BRP")
+public class Brp implements Serializable {
 
     @Id
     @GeneratedValue
-    @Column(name="GRP_ID")
+    @Column(name="BRP_ID")
     private Long id;
 
     @ManyToOne

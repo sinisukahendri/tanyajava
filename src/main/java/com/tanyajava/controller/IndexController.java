@@ -21,6 +21,12 @@ public class IndexController {
     @RequestMapping(value="/index",method=RequestMethod.GET)
     public Model index(Model model){
 
+        //most viewed question today
+        //search
+        //tag cloud
+        //new badge user
+        //trending
+
         return model;
     }
 
