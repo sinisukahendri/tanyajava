@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="MacRoman"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=MacRoman"/>
+        <title>Bertanya</title>
+    </head>
+    <body>
+        <p>
+            Bertanya 
+        </p>
+        <form action="" method="POST">
+        <table>
+            <tr>
+                <td>Judul</td>
+                <td><input type="text" name="title" alt="judul pertanyaan" value="$!question.title"/></td>
+            </tr>
+            <tr>
+                <td>Pertanyaan</td>
+                <td>
+                    <textarea name="question" cols="40" rows="15">$!question.question</textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>Kategori</td>
+                <td><input type="text" name="tags" alt="kategori pertanyaan, pisahkan dengan koma"/></td>
+            </tr>
+            <tr>
+                <td><input type="submit" name="submit" /></td>
+            </tr>
+        </table>
+        </form>
+    </body>
+</html>

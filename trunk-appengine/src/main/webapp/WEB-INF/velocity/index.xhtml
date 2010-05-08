@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="MacRoman"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=MacRoman"/>
+        <title>Silahkan bertanya tentang java</title>
+    </head>
+    <body>
+
+        <table>
+            <tr>
+                <td><a href="ask">Bertanya</a></td>
+            </tr>
+        </table>
+        <table>
+            #foreach($question in $questionList)
+            <tr>
+                <td>#if($question.answered)
+                        terjawab
+                    #else
+                        terbuka
+                    #end
+                </td>
+                <td>
+                    <table>
+                        <tr>
+                            <td colspan="3"><a href="$question.url">$question.title</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                #foreach($tag in $question.tags)
+                                    $tag.name 
+                                #end
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            #end
+        </table>
+    </body>
+</html>
