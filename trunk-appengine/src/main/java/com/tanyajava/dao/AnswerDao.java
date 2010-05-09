@@ -6,14 +6,13 @@
 package com.tanyajava.dao;
 
 import com.tanyajava.model.Answer;
-import java.awt.event.ActionListener;
 import java.util.List;
 
 /**
  *
  * @author ifnu
  */
-public interface AnswerDao extends ActionListener {
+public interface AnswerDao {
 
     public Answer findById(Long id);
 
