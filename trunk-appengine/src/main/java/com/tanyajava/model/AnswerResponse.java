@@ -5,6 +5,7 @@
 
 package com.tanyajava.model;
 
+import com.google.appengine.api.datastore.Key;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
@@ -27,26 +28,22 @@ public class AnswerResponse implements Serializable {
 
     @Id
     @GeneratedValue
-    @Column(name="ANSWER_RESPONSE_ID")
-    private Long id;
+    private Key id;
 
     @Lob
-    @Column(name="RESPONSE")
     private String response;
 
     @ManyToOne(optional=false)
-    @JoinColumn(name="USER_D")
     private User user;
 
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
-    @Column(name="DATE_CREATED",updatable=false)
     private Date dateCreated = new Date();
 
-    public Long getId() {
+    public Key getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Key id) {
         this.id = id;
     }
 

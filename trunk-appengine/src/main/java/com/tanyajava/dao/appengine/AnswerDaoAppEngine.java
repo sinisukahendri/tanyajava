@@ -10,7 +10,7 @@ import com.tanyajava.model.Answer;
 import com.tanyajava.model.Question;
 import java.util.List;
 import javax.persistence.EntityManager;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -20,7 +20,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class AnswerDaoAppEngine implements AnswerDao {
 
-    @Autowired private EntityManager entityManager;
+    @PersistenceContext private EntityManager entityManager;
 
     public Answer findById(Long id) {
         return entityManager.find(Answer.class, id);

@@ -5,19 +5,15 @@
 
 package com.tanyajava.model;
 
+import com.google.appengine.api.datastore.Key;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.Lob;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 import javax.persistence.Temporal;
 
 /**
@@ -25,42 +21,33 @@ import javax.persistence.Temporal;
  * @author ifnu
  */
 @Entity
-@Table(name="QUESTION")
 public class Question implements Serializable{
 
     @Id
-    @GeneratedValue
-    @Column(name="QUESTION_ID")
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Key id;
 
-    @Column(name="URL",length=255,unique=true)
     private String url;
 
-    @Column(name="TITLE")
     private String title;
 
     @Lob
-    @Column(name="QUESTION")
     private String question;
 
-    @ManyToMany
-    @JoinTable(name="QUESTION_TAGS",
-        joinColumns=@JoinColumn(name="QUESTION_ID"),
-        inverseJoinColumns=@JoinColumn(name="TAG_ID"))
-    private List<Tag> tags;
+//    @OneToMany
+//    private List<Tag> tags;
 
-    @ManyToOne
-    @JoinColumn(name="USER_ID",referencedColumnName="USER_ID",nullable=false)
-    private User user;
+//    @OneToMany(mappedBy = "question")
+//    private List<Answer> answers;
+
+//    @ManyToOne
+//    private User user;
 
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
-    @Column(name="DATE_CREATED",updatable=false)
     private Date createdDate = new Date();
 
-    @Column(name="ANSWERED")
     private Boolean answered = Boolean.FALSE;
 
-    @Column(name="VIEWED")
     private Long viewed;
 
     public Boolean isAnswered() {
@@ -79,11 +66,11 @@ public class Question implements Serializable{
         this.createdDate = createdDate;
     }
 
-    public Long getId() {
+    public Key getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Key id) {
         this.id = id;
     }
 
@@ -96,20 +83,21 @@ public class Question implements Serializable{
     }
 
     public List<Tag> getTags() {
-        return tags;
+//        return tags;
+        return null;
     }
 
     public void setTags(List<Tag> tags) {
-        this.tags = tags;
+//        this.tags = tags;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
 
     public Long getViewed() {
         return viewed;
@@ -133,6 +121,15 @@ public class Question implements Serializable{
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public List<Answer> getAnswers() {
+//        return answers;
+        return null;
+    }
+
+    public void setAnswers(List<Answer> answers) {
+//        this.answers = answers;
     }
 
 

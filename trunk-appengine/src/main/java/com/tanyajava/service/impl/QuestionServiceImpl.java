@@ -7,7 +7,6 @@ package com.tanyajava.service.impl;
 
 import com.tanyajava.dao.QuestionDao;
 import com.tanyajava.model.Question;
-import com.tanyajava.model.Tag;
 import com.tanyajava.service.QuestionService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
  *
  * @author ifnu
  */
-@Service
+@Service("questionService")
 @Transactional(readOnly=true)
 public class QuestionServiceImpl implements QuestionService{
 
@@ -39,12 +38,15 @@ public class QuestionServiceImpl implements QuestionService{
     }
 
     public List<Question> getQuestion(int start, int num) {
-        return null;
-//        return questionDao.getQuestion(start,num);
+        return questionDao.findAll(start,num);
     }
 
     public List<Question> getQuestion(String keyword, int start, int num) {
         throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public Question getQuestionByUrl(String url) {
+        return questionDao.findByUrl(url);
     }
 
 }

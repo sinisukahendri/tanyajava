@@ -9,7 +9,7 @@ import com.tanyajava.dao.TagDao;
 import com.tanyajava.model.Tag;
 import java.util.List;
 import javax.persistence.EntityManager;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -19,7 +19,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class TagDaoAppEngine implements TagDao{
 
-    @Autowired private EntityManager entityManager;
+    @PersistenceContext private EntityManager entityManager;
 
     public Tag findById(String name) {
         return entityManager.find(Tag.class, name);

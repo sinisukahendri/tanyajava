@@ -7,9 +7,10 @@ package com.tanyajava.dao.appengine;
 
 import com.tanyajava.dao.QuestionDao;
 import com.tanyajava.model.Question;
+import com.tanyajava.utils.QuestionUrlUtils;
 import java.util.List;
 import javax.persistence.EntityManager;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -18,20 +19,26 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class QuestionDaoAppEngine implements QuestionDao{
-    @Autowired private EntityManager entityManager;
+
+    @PersistenceContext private EntityManager entityManager;
 
     public Question findById(String name) {
         return entityManager.find(Question.class, name);
     }
 
     public Question save(Question question) {
+
         if(question!=null){
-            Question persistenceTag = entityManager.find(Question.class, question.getId());
-            if(persistenceTag==null){
-                entityManager.persist(question);
-            } else {
-                entityManager.merge(question);
+            //set question url
+            question.setUrl(QuestionUrlUtils.getUrl(question));
+            int i = 1;
+            while(entityManager.createQuery("select q from Question q where q.url=:url")
+                    .setParameter("url", question.getUrl())
+                    .getResultList().size()!=0
+                    ){
+                question.setUrl(question.getUrl() + i++);
             }
+            entityManager.persist(question);
         }
         return question;
     }
@@ -56,5 +63,20 @@ public class QuestionDaoAppEngine implements QuestionDao{
                 .setMaxResults(pageSize)
                 .getResultList();
         
+    }
+
+    public Question findByUrl(String url) {
+        Question q = (Question) entityManager.createQuery("select q from Question q where q.url=:url")
+                .setParameter("url", url)
+                .getSingleResult();
+        if(q!=null){
+            if(q.getTags()!=null){
+                q.getTags().size();
+            }
+            if(q.getAnswers()!=null){
+                q.getAnswers().size();
+            }
+        }
+        return q;
     }
 }

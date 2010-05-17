@@ -5,15 +5,14 @@
 
 package com.tanyajava.model;
 
+import com.google.appengine.api.datastore.Key;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.Table;
 import javax.persistence.Temporal;
 
 /**
@@ -21,18 +20,14 @@ import javax.persistence.Temporal;
  * @author ifnu
  */
 @Entity
-@Table(name="T_BADGE")
 public class Badge implements Serializable {
 
     @Id
     @GeneratedValue
-    @Column(name="BADGE_ID")
-    private Long id;
+    private Key id;
 
-    @Column(name="BADGE_NAME",length=25,unique=true)
     private String name;
 
-    @Column(name="ASSIGNED")
     private Long assigned;
 
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
@@ -65,11 +60,11 @@ public class Badge implements Serializable {
         this.createdDate = createdDate;
     }
 
-    public Long getId() {
+    public Key getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Key id) {
         this.id = id;
     }
 

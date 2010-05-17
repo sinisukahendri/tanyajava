@@ -13,7 +13,7 @@ public class QuestionForm {
 
     private String question;
     private String title;
-    private String tags;
+    private String tagString;
     private String categories;
 
     public String getCategories() {
@@ -32,20 +32,20 @@ public class QuestionForm {
         this.question = question;
     }
 
-    public String getTags() {
-        return tags;
-    }
-
-    public void setTags(String tags) {
-        this.tags = tags;
-    }
-
     public String getTitle() {
         return title;
     }
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getTagString() {
+        return tagString;
+    }
+
+    public void setTagString(String tagString) {
+        this.tagString = tagString;
     }
 
 }

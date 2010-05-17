@@ -21,4 +21,6 @@ public interface QuestionDao {
 
     public List<Question> findAll(Integer startIndex, Integer pageSize);
 
+    public Question findByUrl(String url);
+
 }

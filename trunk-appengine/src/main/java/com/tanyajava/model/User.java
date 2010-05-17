@@ -5,15 +5,13 @@
 
 package com.tanyajava.model;
 
+import com.google.appengine.api.datastore.Key;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -28,18 +26,13 @@ public class User implements Serializable {
 
     @Id
     @GeneratedValue
-    @Column(name="USER_ID")
-    private Long id;
+    private Key id;
 
-    @Column(name="USER_NAME",length=100,unique=true)
     private String username;
 
-    @Column(name="EMAIL",length=100,unique=true)
     private String email;
 
     @ManyToMany
-    @JoinTable(joinColumns=@JoinColumn(name="USER_ID"),
-        inverseJoinColumns=@JoinColumn(name="BADGE_ID"))
     private List<Badge> badges;
 
     @OneToMany(mappedBy="assignee",cascade=CascadeType.ALL)
@@ -86,7 +79,6 @@ public class User implements Serializable {
         this.earnedGrp = earnedGrp;
     }
 
-
     public List<Badge> getBadges() {
         return badges;
     }
@@ -103,11 +95,11 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public Long getId() {
+    public Key getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Key id) {
         this.id = id;
     }
 

@@ -5,6 +5,7 @@
 
 package com.tanyajava.model;
 
+import com.google.appengine.api.datastore.Key;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
@@ -12,6 +13,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -26,25 +28,22 @@ public class Answer implements Serializable{
 
     @Id
     @GeneratedValue
-    @Column(name="ANSWER_ID")
-    private Long id;
+    private Key id;
+
+    @Lob
+    private String answer;
 
     @ManyToOne(optional=false)
-    @JoinColumn(name="QUESTION_ID",referencedColumnName="QUESTION_ID")
     private Question question;
 
-    @Column(name="VOTED_UP")
     private Long votedUp=0l;
 
-    @Column(name="VOTED_DOWN")
     private Long votedDown=0l;
 
     @ManyToOne(optional=false)
-    @JoinColumn(name="USER_ID",referencedColumnName="USER_ID")
     private User user;
 
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
-    @Column(name="DATE_CREATED",updatable=false)
     private Date dateCreated = new Date();
 
     public Date getDateCreated() {
@@ -63,11 +62,11 @@ public class Answer implements Serializable{
         this.user = user;
     }
 
-    public Long getId() {
+    public Key getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Key id) {
         this.id = id;
     }
 
@@ -95,5 +94,12 @@ public class Answer implements Serializable{
         this.votedUp = votedUp;
     }
 
+    public String getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
     
 }

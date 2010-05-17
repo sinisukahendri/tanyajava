@@ -25,7 +25,7 @@ public class IndexController {
     public Model index(Model model){
 
         //most viewed question today
-        model.addAllAttributes(questionService.getQuestion(0, 10));
+        model.addAttribute(questionService.getQuestion(0, 10));
         //search
         //tag cloud
         //new badge user

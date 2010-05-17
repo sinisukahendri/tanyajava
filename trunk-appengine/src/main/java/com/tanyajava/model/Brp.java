@@ -5,34 +5,28 @@
 
 package com.tanyajava.model;
 
+import com.google.appengine.api.datastore.Key;
 import java.io.Serializable;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 /**
  *
  * @author ifnu
  */
 @Entity
-@Table(name="T_BRP")
 public class Brp implements Serializable {
 
     @Id
     @GeneratedValue
-    @Column(name="BRP_ID")
-    private Long id;
+    private Key id;
 
     @ManyToOne
-    @JoinColumn(name="USER_ASSIGNER_ID")
     private User assigner;
 
     @ManyToOne
-    @JoinColumn(name="USER_ASSIGNEe_ID")
     private User assignee;
 
     public User getAssignee() {
@@ -51,11 +45,11 @@ public class Brp implements Serializable {
         this.assigner = assigner;
     }
 
-    public Long getId() {
+    public Key getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Key id) {
         this.id = id;
     }
 

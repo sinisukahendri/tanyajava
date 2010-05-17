@@ -9,7 +9,7 @@ import com.tanyajava.dao.UserDao;
 import com.tanyajava.model.User;
 import java.util.List;
 import javax.persistence.EntityManager;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -19,7 +19,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class UserDaoAppEngine implements UserDao{
 
-    @Autowired private EntityManager entityManager;
+    @PersistenceContext private EntityManager entityManager;
 
     public User findById(String name) {
         return entityManager.find(User.class, name);

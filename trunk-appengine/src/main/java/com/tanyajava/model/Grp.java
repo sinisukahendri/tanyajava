@@ -6,33 +6,26 @@
 package com.tanyajava.model;
 
 import java.io.Serializable;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 /**
  *
  * @author ifnu
  */
 @Entity
-@Table(name="T_GRP")
 public class Grp implements Serializable {
 
     @Id
     @GeneratedValue
-    @Column(name="GRP_ID")
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name="USER_ASSIGNER_ID",referencedColumnName="USER_ID")
     private User assigner;
 
     @ManyToOne
-    @JoinColumn(name="USER_ASSIGNEE_ID",referencedColumnName="USER_ID")
     private User assignee;
 
     public User getAssignee() {
