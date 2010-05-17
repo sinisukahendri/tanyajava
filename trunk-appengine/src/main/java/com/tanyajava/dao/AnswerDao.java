@@ -6,6 +6,7 @@
 package com.tanyajava.dao;
 
 import com.tanyajava.model.Answer;
+import com.tanyajava.model.Question;
 import java.util.List;
 
 /**
@@ -20,6 +21,6 @@ public interface AnswerDao {
 
     public void delete(Answer domain);
 
-    public List<Answer> findAll(Integer startIndex, Integer pageSize);
+    public List<Answer> findAll(Question question, Integer startIndex, Integer pageSize);
 
 }

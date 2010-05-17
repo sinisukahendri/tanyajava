@@ -5,8 +5,6 @@
 
 package com.tanyajava.service;
 
-import com.tanyajava.model.Category;
-import com.tanyajava.model.Question;
 import com.tanyajava.model.Tag;
 import java.util.List;
 
@@ -16,14 +14,10 @@ import java.util.List;
  */
 public interface MasterService {
 
-    void save(Category category);
-    void delete(Category category);
-    Category getCategory(Long id);
-    List<Category> getCategory(int start, int num);
-
     void save(Tag tag);
+    List<Tag> save(String tags);
     void delete(Tag tag);
-    Tag getTag(Long id);
+    Tag getTag(String id);
     List<Tag> getTag(int start, int num);
 
 

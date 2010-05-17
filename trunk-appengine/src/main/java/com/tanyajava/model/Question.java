@@ -44,12 +44,6 @@ public class Question implements Serializable{
     private String question;
 
     @ManyToMany
-    @JoinTable(name="QUESTION_CATEGORY",
-        joinColumns=@JoinColumn(name="QUESTION_ID"),
-        inverseJoinColumns=@JoinColumn(name="CATEGORY_ID"))
-    private List<Category> categories;
-
-    @ManyToMany
     @JoinTable(name="QUESTION_TAGS",
         joinColumns=@JoinColumn(name="QUESTION_ID"),
         inverseJoinColumns=@JoinColumn(name="TAG_ID"))
@@ -75,14 +69,6 @@ public class Question implements Serializable{
 
     public void setAnswered(Boolean answered) {
         this.answered = answered;
-    }
-
-    public List<Category> getCategories() {
-        return categories;
-    }
-
-    public void setCategories(List<Category> categories) {
-        this.categories = categories;
     }
 
     public Date getCreatedDate() {

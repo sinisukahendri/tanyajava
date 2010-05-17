@@ -13,7 +13,8 @@ import java.util.List;
  * @author ifnu
  */
 public interface TagDao {
-    public Tag findById(Long id);
+
+    public Tag findById(String id);
 
     public Tag save(Tag domain);
 

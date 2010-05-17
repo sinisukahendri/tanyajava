@@ -7,6 +7,7 @@ package com.tanyajava.dao.appengine;
 
 import com.tanyajava.dao.AnswerDao;
 import com.tanyajava.model.Answer;
+import com.tanyajava.model.Question;
 import java.util.List;
 import javax.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,8 +39,12 @@ public class AnswerDaoAppEngine implements AnswerDao {
         entityManager.remove(domain);
     }
 
-    public List<Answer> findAll(Integer startIndex, Integer pageSize) {
-        return entityManager.cre
+    public List<Answer> findAll(Question question, Integer startIndex, Integer pageSize) {
+        return entityManager.createQuery("from Answer a where a.question=:question")
+                .setParameter("question", question)
+                .setFirstResult(startIndex)
+                .setMaxResults(pageSize)
+                .getResultList();
     }
 
 }

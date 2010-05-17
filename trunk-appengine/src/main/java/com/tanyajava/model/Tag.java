@@ -25,14 +25,10 @@ import javax.persistence.Temporal;
 public class Tag implements Serializable {
 
     @Id
-    @GeneratedValue
-    @Column(name="TAG_ID")
-    private Long id;
-
     @Column(name="TAG_NAME",length=20,unique=true)
     private String name;
 
-    @Column(name="ASSIGNED",length=20,unique=true)
+    @Column(name="ASSIGNED",length=20)
     private Long assigned;
 
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
@@ -64,14 +60,6 @@ public class Tag implements Serializable {
 
     public void setDateCreated(Date dateCreated) {
         this.dateCreated = dateCreated;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {

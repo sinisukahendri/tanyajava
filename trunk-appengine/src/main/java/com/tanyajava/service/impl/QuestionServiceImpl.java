@@ -6,7 +6,6 @@
 package com.tanyajava.service.impl;
 
 import com.tanyajava.dao.QuestionDao;
-import com.tanyajava.model.Category;
 import com.tanyajava.model.Question;
 import com.tanyajava.model.Tag;
 import com.tanyajava.service.QuestionService;
@@ -45,18 +44,7 @@ public class QuestionServiceImpl implements QuestionService{
     }
 
     public List<Question> getQuestion(String keyword, int start, int num) {
-//        return questionDao.getQuestion(keyword,start,num);
-        return null;
-    }
-
-    public List<Question> getQuestion(Tag tag, int start, int num) {
-//        return questionDao.getQuestion(tag,start,num);
-        return null;
-    }
-
-    public List<Question> getQuestion(Category category, int start, int num) {
-//        return questionDao.getQuestion(category,start,num);
-        return null;
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
 }
