@@ -6,10 +6,14 @@
 package com.tanyajava.service.impl;
 
 import com.tanyajava.dao.CategoryDao;
+import com.tanyajava.dao.CompanyRoleDao;
+import com.tanyajava.dao.ProjectStageDao;
 import com.tanyajava.dao.TagDao;
 import com.tanyajava.model.Category;
 import com.tanyajava.model.Tag;
 import com.tanyajava.service.MasterService;
+import com.tanyajava.model.CompanyRole;
+import com.tanyajava.model.ProjectStage;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +29,8 @@ public class MasterServiceImpl implements MasterService{
 
     @Autowired private TagDao tagDao;
     @Autowired private CategoryDao categoryDao;
+    @Autowired private ProjectStageDao projectStageDao;
+    @Autowired private CompanyRoleDao companyRoleDao;
 
     @Transactional
     public void save(Category category) {
@@ -59,6 +65,14 @@ public class MasterServiceImpl implements MasterService{
 
     public List<Tag> getTag(int start, int num) {
         return tagDao.getTag(start,num);
+    }
+
+    public List<CompanyRole> getCompanyRoles() {
+        return companyRoleDao.findAll();
+    }
+
+    public List<ProjectStage> getProjectStages() {
+        return projectStageDao.findAll();
     }
 
 }
