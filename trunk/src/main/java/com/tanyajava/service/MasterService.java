@@ -8,6 +8,8 @@ package com.tanyajava.service;
 import com.tanyajava.model.Category;
 import com.tanyajava.model.Question;
 import com.tanyajava.model.Tag;
+import com.tanyajava.model.CompanyRole;
+import com.tanyajava.model.ProjectStage;
 import java.util.List;
 
 /**
@@ -25,6 +27,9 @@ public interface MasterService {
     void delete(Tag tag);
     Tag getTag(Long id);
     List<Tag> getTag(int start, int num);
+
+    List<CompanyRole> getCompanyRoles();
+    List<ProjectStage> getProjectStages();
 
 
 }

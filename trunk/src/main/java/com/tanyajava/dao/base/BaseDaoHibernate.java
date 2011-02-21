@@ -48,5 +48,9 @@ public class BaseDaoHibernate<T> {
     public List<T> findAll(Integer startIndex, Integer pageSize) {
         return sessionFactory.getCurrentSession().createQuery("from " + domainClass.getName()).setFirstResult(startIndex).setMaxResults(pageSize).list();
     }
+    @SuppressWarnings("unchecked")
+    public List<T> findAll() {
+        return sessionFactory.getCurrentSession().createQuery("from " + domainClass.getName()).list();
+    }
 
 }

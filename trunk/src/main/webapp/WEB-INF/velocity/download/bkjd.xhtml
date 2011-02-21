@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="MacRoman"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=MacRoman"/>
+        <title>Download Form</title>
+    </head>
+    <body>
+        <p>
+            <table>
+                <tr>
+                    <td>Nama</td>
+                    <td><input type="text" name="name" value="$!download.name"/></td>
+                </tr>
+                <tr>
+                    <td>* Email</td>
+                    <td><input type="text" name="email" value="$!download.email"/></td>
+                </tr>
+                <tr>
+                    <td>* Konfirmasi Email</td>
+                    <td><input type="text" name="confirmEmail" value="$!download.confirmEmail"/></td>
+                </tr>
+                <tr>
+                    <td>Blog/Linkedin/Facebook URL</td>
+                    <td><input type="text" name="blog" value="$!download.blog"/></td>
+                </tr>
+                <tr>
+                    <td>* Perusahaan/Instansi pendidikan</td>
+                    <td><input type="text" name="blog" value="$!download.blog"/></td>
+                </tr>
+                <tr>
+                    <td>* Jumlah Team/Teman Sekelas</td>
+                    <td><input type="text" name="teamSize" value="$!download.teamSize"/></td>
+                </tr>
+                <tr>
+                    <td>Nomor Telpon</td>
+                    <td><input type="text" name="phone" value="$!download.phone"/></td>
+                </tr>
+                <tr>
+                    <td>* Posisi</td>
+                    <td>
+                        <select name="companyRole" id="companyRole" class="shortened" >
+                           #foreach($companyRole in $companyRoles)
+                                #if($companyRole.companyRole.equals($download.companyRole))
+                                    <option value="$companyRole.companyRole" selected>$companyRole.companyRole</option>
+                                #else
+                                    <option value="$companyRole.companyRole">$companyRole.companyRole</option>
+                                #end
+                            #end
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>* Fase Project</td>
+                    <td>
+                        <select name="projectStage" id="companyRole" class="shortened" >
+                           #foreach($projectStage in $projectStages)
+                                #if($projectStage.projectStage.equals($download.projectStage))
+                                    <option value="$projectStage.projectStage" selected>$projectStage.projectStage</option>
+                                #else
+                                    <option value="$projectStage.projectStage">$projectStage.projectStage</option>
+                                #end
+                            #end
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="checkbox" name="newsLetter" value="true" checked/> Bersedia menerima newsletter dan update</td>
+                </tr>
+
+            </table>
+        </p>
+    </body>
+</html>
