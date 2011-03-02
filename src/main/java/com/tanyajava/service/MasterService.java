@@ -6,7 +6,6 @@
 package com.tanyajava.service;
 
 import com.tanyajava.model.Category;
-import com.tanyajava.model.Question;
 import com.tanyajava.model.Tag;
 import com.tanyajava.model.CompanyRole;
 import com.tanyajava.model.ProjectStage;
