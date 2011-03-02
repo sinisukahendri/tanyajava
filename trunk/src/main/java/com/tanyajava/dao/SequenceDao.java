@@ -47,6 +47,9 @@ public class SequenceDao extends BaseDaoHibernate<Sequence>{
         return lastSequence;
     }
     public String replaceLastChar(String str, char c){
+        if(str.length() == 1){
+            return String.valueOf(c);
+        }
         String replaced = str.substring(0,str.length()-2);
         return replaced + c;
     }

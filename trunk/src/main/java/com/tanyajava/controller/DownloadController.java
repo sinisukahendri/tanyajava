@@ -40,24 +40,27 @@ public class DownloadController {
         return "/download/" + id;
     }
     @RequestMapping(value="/download/done", method=RequestMethod.GET)
-    public String downloadDone(@PathVariable String id, Model model){
-        return "/download/done";
+    public String downloadDone(Model model){
+        return "/download/download_done";
     }
     
-    @RequestMapping(value="/download/{id}/submit",method=RequestMethod.POST)
+    @RequestMapping(value="/download/{id}",method=RequestMethod.POST)
     public String getDownload(@PathVariable String id,
-            @ModelAttribute @Valid Download download,
+            @Valid Download download,
             BindingResult result,
             Model model){
         if(!result.hasErrors()
                 && BUKU_JAVA_DESKTOP.equals(id)){
+            if(download.getNewsLetter() == null){
+                download.setNewsLetter(Boolean.FALSE);
+            }
             downloadService.save(download);
             //TODO send email to user
             
         } else if(result.hasErrors()){
             return "/download/" + id;
         }
-        return "redirect:/download/done";
+        return "redirect:/j/download/done";
     }
     
     @RequestMapping(value="/download/{id}/{iddownload}", method=RequestMethod.GET)
@@ -69,12 +72,12 @@ public class DownloadController {
                 d.setDownloadedDate(new Date());
                 d.setStatus(Download.STATUS_DOWNLOADED);
                 downloadService.save(d);
-                return "redirect:/download/success";
+                return "redirect:/j/download/success";
             } else {
                 
             }
         }
-        return "redirect:/download/success";
+        return "redirect:/j/download/success";
     }
 
 }

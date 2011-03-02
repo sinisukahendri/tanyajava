@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="MacRoman"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
 To change this template, choose Tools | Templates
 and open the template in the editor.
@@ -11,68 +11,100 @@ and open the template in the editor.
     </head>
     <body>
         <p>
-            <table>
-                <tr>
-                    <td>Nama</td>
-                    <td><input type="text" name="name" value="$!download.name"/></td>
-                </tr>
-                <tr>
-                    <td>* Email</td>
-                    <td><input type="text" name="email" value="$!download.email"/></td>
-                </tr>
-                <tr>
-                    <td>* Konfirmasi Email</td>
-                    <td><input type="text" name="confirmEmail" value="$!download.confirmEmail"/></td>
-                </tr>
-                <tr>
-                    <td>Blog/Linkedin/Facebook URL</td>
-                    <td><input type="text" name="blog" value="$!download.blog"/></td>
-                </tr>
-                <tr>
-                    <td>* Perusahaan/Instansi pendidikan</td>
-                    <td><input type="text" name="blog" value="$!download.blog"/></td>
-                </tr>
-                <tr>
-                    <td>* Jumlah Team/Teman Sekelas</td>
-                    <td><input type="text" name="teamSize" value="$!download.teamSize"/></td>
-                </tr>
-                <tr>
-                    <td>Nomor Telpon</td>
-                    <td><input type="text" name="phone" value="$!download.phone"/></td>
-                </tr>
-                <tr>
-                    <td>* Posisi</td>
-                    <td>
-                        <select name="companyRole" id="companyRole" class="shortened" >
-                           #foreach($companyRole in $companyRoles)
+            <form action="" method="post">
+                <table>
+                    <tr>
+                        <td>Nama</td>
+                        <td><input type="text" name="name" value="$!download.name"/></td>
+                        <td>
+                          #springBind("download.name")
+                          #springShowErrors("<br/>" "")
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>* Email</td>
+                        <td><input type="text" name="email" value="$!download.email"/></td>
+                        <td>
+                          #springBind("download.email")
+                          #springShowErrors("<br/>" "")
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>* Konfirmasi Email</td>
+                        <td><input type="text" name="confirmEmail" value="$!download.confirmEmail"/></td>
+                        <td>
+                          #springBind("download.confirmEmail")
+                          #springShowErrors("<br/>" "")
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Blog/Linkedin/Facebook URL</td>
+                        <td><input type="text" name="blog" value="$!download.blog"/></td>
+                        <td>
+                          #springBind("download.blog")
+                          #springShowErrors("<br/>" "")
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>* Perusahaan/Instansi pendidikan</td>
+                        <td><input type="text" name="company" value="$!download.company"/></td>
+                        <td>
+                          #springBind("download.company")
+                          #springShowErrors("<br/>" "")
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>* Jumlah Team/Teman Sekelas</td>
+                        <td><input type="text" name="teamSize" value="$!download.teamSize"/></td>
+                        <td>
+                          #springBind("download.teamSize")
+                          #springShowErrors("<br/>" "")
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Nomor Telpon</td>
+                        <td><input type="text" name="phone" value="$!download.phone"/></td>
+                        <td>
+                          #springBind("download.phone")
+                          #springShowErrors("<br/>" "")
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>* Posisi</td>
+                        <td>
+                            <select name="companyRole" id="companyRole" class="shortened" >
+                                #foreach($companyRole in $companyRoles)
                                 #if($companyRole.companyRole.equals($download.companyRole))
-                                    <option value="$companyRole.companyRole" selected>$companyRole.companyRole</option>
+                                <option value="$companyRole.companyRole" selected>$companyRole.companyRole</option>
                                 #else
-                                    <option value="$companyRole.companyRole">$companyRole.companyRole</option>
+                                <option value="$companyRole.companyRole">$companyRole.companyRole</option>
                                 #end
-                            #end
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>* Fase Project</td>
-                    <td>
-                        <select name="projectStage" id="companyRole" class="shortened" >
-                           #foreach($projectStage in $projectStages)
+                                #end
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>* Fase Project</td>
+                        <td>
+                            <select name="projectStage" id="companyRole" class="shortened" >
+                                #foreach($projectStage in $projectStages)
                                 #if($projectStage.projectStage.equals($download.projectStage))
-                                    <option value="$projectStage.projectStage" selected>$projectStage.projectStage</option>
+                                <option value="$projectStage.projectStage" selected>$projectStage.projectStage</option>
                                 #else
-                                    <option value="$projectStage.projectStage">$projectStage.projectStage</option>
+                                <option value="$projectStage.projectStage">$projectStage.projectStage</option>
                                 #end
-                            #end
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2"><input type="checkbox" name="newsLetter" value="true" checked/> Bersedia menerima newsletter dan update</td>
-                </tr>
-
-            </table>
+                                #end
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><input type="checkbox" name="newsLetter" value="true" checked/> Bersedia menerima newsletter dan update</td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" name="submit" value="download"/></td>
+                    </tr>
+                </table>
+            </form>
         </p>
     </body>
 </html>

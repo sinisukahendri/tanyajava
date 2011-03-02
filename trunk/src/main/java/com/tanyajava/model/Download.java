@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 /**
@@ -32,9 +33,13 @@ public class Download implements Serializable {
 
     @NotEmpty
     @Size(min=1,max=100)
+    @Email
     @Column(name="EMAIL",length=100,nullable=false)
     private String email;
 
+    @NotEmpty
+    @Size(min=1,max=100)
+    @Email
     private transient String confirmEmail;
 
     @NotEmpty
@@ -66,7 +71,7 @@ public class Download implements Serializable {
     private String projectStage;
 
     @Column(name="NEWSLETTER")
-    private Boolean newsLetter= Boolean.TRUE;
+    private Boolean newsLetter;
     
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     @Column(name="DOWNLOAD_DATE")
