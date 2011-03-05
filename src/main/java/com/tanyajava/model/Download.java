@@ -10,6 +10,7 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.validation.constraints.Size;
@@ -83,6 +84,10 @@ public class Download implements Serializable {
 
     @Column(name="STATUS", length=1)
     private String status = STATUS_CREATED;
+
+    @ManyToOne
+    @Column(name="DOWNLOAD_ITEM_FK",nullable=false)
+    private DownloadItem downloadItem;
 
     public String getBlog() {
         return blog;
@@ -194,6 +199,14 @@ public class Download implements Serializable {
 
     public void setConfirmEmail(String confirmEmail) {
         this.confirmEmail = confirmEmail;
+    }
+
+    public DownloadItem getDownloadItem() {
+        return downloadItem;
+    }
+
+    public void setDownloadItem(DownloadItem downloadItem) {
+        this.downloadItem = downloadItem;
     }
 
 }

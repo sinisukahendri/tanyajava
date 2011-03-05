@@ -12,17 +12,33 @@
        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
     <mvc:annotation-driven/>
-    <context:property-placeholder location="classpath:jdbc.properties" />
     <import resource="classpath:email.xml"/>
     <context:component-scan base-package="com.tanyajava" />
 
     <tx:annotation-driven transaction-manager="txManager" />
-
+    <bean id="environmentVariablesConfiguration"
+     class="org.jasypt.encryption.pbe.config.EnvironmentStringPBEConfig">
+        <property name="algorithm" value="PBEWithMD5AndDES" />
+        <property name="passwordEnvName" value="APP_ENCRYPTION_PASSWORD" />
+    </bean>
+    <bean id="configurationEncryptor"
+     class="org.jasypt.encryption.pbe.StandardPBEStringEncryptor">
+        <property name="config" ref="environmentVariablesConfiguration" />
+    </bean>
+    <bean class="org.jasypt.spring.properties.EncryptablePropertyPlaceholderConfigurer">
+        <constructor-arg ref="configurationEncryptor"/>
+        <property name="locations">
+            <list>
+                <value>classpath:jdbc.properties</value>
+                <value>classpath:email.properties</value>
+            </list>
+        </property>
+    </bean>
     <bean id="dataSource"
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
-		p:driverClassName="${hibernate.connection.driver_class}"
-                p:url="${hibernate.connection.url}"
-		p:username="${hibernate.connection.username}"
+        class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+	p:driverClassName="${hibernate.connection.driver_class}"
+        p:url="${hibernate.connection.url}"
+	p:username="${hibernate.connection.username}"
         p:password="${hibernate.connection.password}" />
 
     <bean id="sessionFactory"
