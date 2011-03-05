@@ -13,5 +13,19 @@ Tim tanyajava.com','Download Buku Java Desktop - Ifnu Bima','tanyajava <tanya.jv
 
 
 insert into T_COMPANY_ROLE(COMPANY_ROLE) values ('Pelajar');
+insert into T_COMPANY_ROLE(COMPANY_ROLE) values ('Mahasiswa');
+insert into T_COMPANY_ROLE(COMPANY_ROLE) values ('Junior Developer');
+insert into T_COMPANY_ROLE(COMPANY_ROLE) values ('Senior Developer');
+insert into T_COMPANY_ROLE(COMPANY_ROLE) values ('Architect');
+insert into T_COMPANY_ROLE(COMPANY_ROLE) values ('Bussiness Analyst');
+insert into T_COMPANY_ROLE(COMPANY_ROLE) values ('Software Tester');
+insert into T_COMPANY_ROLE(COMPANY_ROLE) values ('Chief Technology Officer');
+insert into T_COMPANY_ROLE(COMPANY_ROLE) values ('Chief Information Officer');
+insert into T_COMPANY_ROLE(COMPANY_ROLE) values ('Director / Company Owner');
 
+insert into T_PROJECT_STAGE(PROJECT_STAGE) values ('Learning');
 insert into T_PROJECT_STAGE(PROJECT_STAGE) values ('Investigation');
+insert into T_PROJECT_STAGE(PROJECT_STAGE) values ('Evaluation');
+insert into T_PROJECT_STAGE(PROJECT_STAGE) values ('Development');
+insert into T_PROJECT_STAGE(PROJECT_STAGE) values ('Maintenance');
+insert into T_PROJECT_STAGE(PROJECT_STAGE) values ('Maintenance');

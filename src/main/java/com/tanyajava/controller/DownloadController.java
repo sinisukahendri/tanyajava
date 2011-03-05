@@ -50,7 +50,7 @@ public class DownloadController {
         model.addAttribute("content",downloadItem.getContent());
         model.addAttribute("title",downloadItem.getTitle());
         model.addAttribute(new Download());
-        return "/download/" + id;
+        return "/download/download";
     }
     
     @RequestMapping(value="/download/done", method=RequestMethod.GET)
@@ -76,7 +76,7 @@ public class DownloadController {
             downloadService.save(download, id);
             
         } else if(result.hasErrors()){
-            return "/download/" + id;
+            return "/download/download";
         }
         return "redirect:/download/done";
     }
