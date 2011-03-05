@@ -11,6 +11,7 @@ import com.tanyajava.dao.SequenceDao;
 import com.tanyajava.service.DownloadService;
 import com.tanyajava.model.Download;
 import com.tanyajava.model.DownloadItem;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -20,7 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
  *
  * @author ifnu
  */
-@Service
+@Service(value="downloadService")
 @Transactional(readOnly=true)
 public class DownloadServiceImpl implements DownloadService {
 
@@ -37,6 +38,8 @@ public class DownloadServiceImpl implements DownloadService {
     public void save(Download download, String downloadItemId) {
         String seq = sequenceDao.getNextDownloadSequence();
         DownloadItem downloadItem = downloadItemDao.findById(downloadItemId);
+        assert download != null;
+        assert downloadItem != null;
         if(download.getId() == null){
             download.setId(seq);
             download.setDownloadItem(downloadItem);
@@ -45,7 +48,7 @@ public class DownloadServiceImpl implements DownloadService {
             downloadDao.update(download);
         }
         //sekalian send email
-        emailSenderService.sendDownloadEmail(download.getEmail(), seq, downloadItem);
+        emailSenderService.sendDownloadEmail(download, downloadItem);
         
     }
 
@@ -53,7 +56,12 @@ public class DownloadServiceImpl implements DownloadService {
         return downloadItemDao.findById(id);
     }
 
+    @Transactional(readOnly=false,isolation=Isolation.SERIALIZABLE)
     public void update(Download download) {
         downloadDao.update(download);
+    }
+
+    public List<DownloadItem> getDownloadItems() {
+        return downloadItemDao.findAll();
     }
 }

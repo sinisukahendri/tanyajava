@@ -10,6 +10,7 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -86,7 +87,7 @@ public class Download implements Serializable {
     private String status = STATUS_CREATED;
 
     @ManyToOne
-    @Column(name="DOWNLOAD_ITEM_FK",nullable=false)
+    @JoinColumn(name="DOWNLOAD_ITEM_FK",nullable=false)
     private DownloadItem downloadItem;
 
     public String getBlog() {
