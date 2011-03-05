@@ -31,9 +31,14 @@ public class DownloadItem implements Serializable {
     @Column(name="CONTENT")
     private String content;
 
-    @Lob
     @Column(name="FILE_ABSOLUTE_PATH",length=150)
     private String fileAbsolutePath;
+
+    @Column(name="FILE_MIME_TYPE",length=150)
+    private String fileMimeType;
+
+    @Column(name="FILE_NAME",length=150)
+    private String fileName;
 
     @Lob
     @Column(name="EMAIL_TEMPLATE")
@@ -99,6 +104,22 @@ public class DownloadItem implements Serializable {
 
     public void setFileAbsolutePath(String fileAbsolutePath) {
         this.fileAbsolutePath = fileAbsolutePath;
+    }
+
+    public String getFileMimeType() {
+        return fileMimeType;
+    }
+
+    public void setFileMimeType(String fileMimeType) {
+        this.fileMimeType = fileMimeType;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 
 }

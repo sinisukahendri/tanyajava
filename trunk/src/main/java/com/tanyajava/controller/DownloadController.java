@@ -10,7 +10,15 @@ import com.tanyajava.service.MasterService;
 import com.tanyajava.model.Download;
 import com.tanyajava.model.DownloadItem;
 import com.tanyajava.service.impl.EmailSenderService;
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -44,9 +52,15 @@ public class DownloadController {
         model.addAttribute(new Download());
         return "/download/" + id;
     }
+    
     @RequestMapping(value="/download/done", method=RequestMethod.GET)
     public String downloadDone(Model model){
         return "/download/download_done";
+    }
+    
+    @RequestMapping(value="/download/error", method=RequestMethod.GET)
+    public String downloadError(Model model){
+        return "/download/download_error";
     }
     
     @RequestMapping(value="/download/{id}",method=RequestMethod.POST)
@@ -64,22 +78,44 @@ public class DownloadController {
         } else if(result.hasErrors()){
             return "/download/" + id;
         }
-        return "redirect:/j/download/done";
+        return "redirect:/download/done";
     }
     
     @RequestMapping(value="/download/{id}/{iddownload}", method=RequestMethod.GET)
-    public void getDownload(@PathVariable String id,
-            @PathVariable String iddownload){
+    public String getDownload(@PathVariable String id,
+            @PathVariable String iddownload,
+            HttpServletResponse response){
         Download d = downloadService.getDownload(iddownload);
+        DownloadItem item = d.getDownloadItem();
         if(d != null && d.getStatus().equals(Download.STATUS_CREATED)){
-            d.setDownloadedDate(new Date());
-            d.setStatus(Download.STATUS_DOWNLOADED);
-            downloadService.update(d);
-
-            //
-
+            BufferedInputStream inputStream = null;
+            try {
+                d.setDownloadedDate(new Date());
+                d.setStatus(Download.STATUS_DOWNLOADED);
+                downloadService.update(d);
+                response.setContentType(item.getFileMimeType());
+                response.setHeader("Content-Disposition", "attachment; filename=" + item.getFileName());
+                inputStream = new BufferedInputStream(new FileInputStream(item.getFileAbsolutePath()));
+                byte[] buffer = new byte[1024];
+                int bytesRead;
+                OutputStream outputStream = response.getOutputStream();
+                while ((bytesRead = inputStream.read(buffer)) != -1) {
+                    outputStream.write(buffer, 0, bytesRead);
+                }
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(DownloadController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(DownloadController.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                try {
+                    inputStream.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(DownloadController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            return null;
         } else {
-
+            return "redirect:/download/error";
         }
     }
 

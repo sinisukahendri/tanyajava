@@ -14,6 +14,7 @@
     <mapping class="com.tanyajava.model.User"/>
     <mapping class="com.tanyajava.model.Sequence"/>
     <mapping class="com.tanyajava.model.Download"/>
+    <mapping class="com.tanyajava.model.DownloadItem"/>
     <mapping class="com.tanyajava.model.CompanyRole"/>
     <mapping class="com.tanyajava.model.ProjectStage"/>
   </session-factory>

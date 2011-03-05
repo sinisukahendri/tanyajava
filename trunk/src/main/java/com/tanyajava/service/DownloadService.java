@@ -7,6 +7,7 @@ package com.tanyajava.service;
 
 import com.tanyajava.model.Download;
 import com.tanyajava.model.DownloadItem;
+import java.util.List;
 
 /**
  *
@@ -22,4 +23,5 @@ public interface DownloadService {
     void update(Download download);
 
     DownloadItem getDownloadItem(String id);
+    List<DownloadItem> getDownloadItems();
 }
