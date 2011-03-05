@@ -14,8 +14,8 @@ and open the template in the editor.
             <form action="" method="post">
                 <table>
                     <tr>
-                        <td>Nama</td>
-                        <td><input type="text" name="name" value="$!download.name"/></td>
+                        <td>* Nama</td>
+                        <td><input type="text" name="name" value="$!download.name" size="40"/></td>
                         <td>
                           #springBind("download.name")
                           #springShowErrors("<br/>" "")
@@ -23,7 +23,7 @@ and open the template in the editor.
                     </tr>
                     <tr>
                         <td>* Email</td>
-                        <td><input type="text" name="email" value="$!download.email"/></td>
+                        <td><input type="text" name="email" value="$!download.email" size="40"/></td>
                         <td>
                           #springBind("download.email")
                           #springShowErrors("<br/>" "")
@@ -31,7 +31,7 @@ and open the template in the editor.
                     </tr>
                     <tr>
                         <td>* Konfirmasi Email</td>
-                        <td><input type="text" name="confirmEmail" value="$!download.confirmEmail"/></td>
+                        <td><input type="text" name="confirmEmail" value="$!download.confirmEmail" size="40"/></td>
                         <td>
                           #springBind("download.confirmEmail")
                           #springShowErrors("<br/>" "")
@@ -39,7 +39,7 @@ and open the template in the editor.
                     </tr>
                     <tr>
                         <td>Blog/Linkedin/Facebook URL</td>
-                        <td><input type="text" name="blog" value="$!download.blog"/></td>
+                        <td><input type="text" name="blog" value="$!download.blog" size="60"/></td>
                         <td>
                           #springBind("download.blog")
                           #springShowErrors("<br/>" "")
@@ -47,7 +47,7 @@ and open the template in the editor.
                     </tr>
                     <tr>
                         <td>* Perusahaan/Instansi pendidikan</td>
-                        <td><input type="text" name="company" value="$!download.company"/></td>
+                        <td><input type="text" name="company" value="$!download.company" size="50"/></td>
                         <td>
                           #springBind("download.company")
                           #springShowErrors("<br/>" "")
@@ -55,7 +55,7 @@ and open the template in the editor.
                     </tr>
                     <tr>
                         <td>* Jumlah Team/Teman Sekelas</td>
-                        <td><input type="text" name="teamSize" value="$!download.teamSize"/></td>
+                        <td><input type="text" name="teamSize" value="$!download.teamSize" size="10"/></td>
                         <td>
                           #springBind("download.teamSize")
                           #springShowErrors("<br/>" "")
@@ -63,7 +63,7 @@ and open the template in the editor.
                     </tr>
                     <tr>
                         <td>Nomor Telpon</td>
-                        <td><input type="text" name="phone" value="$!download.phone"/></td>
+                        <td><input type="text" name="phone" value="$!download.phone" size="40"/></td>
                         <td>
                           #springBind("download.phone")
                           #springShowErrors("<br/>" "")
