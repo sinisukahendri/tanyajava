@@ -27,7 +27,7 @@ import javax.persistence.Temporal;
  * @author ifnu
  */
 @Entity
-@Table(name="QUESTION")
+@Table(name="T_QUESTION")
 public class Question implements Serializable{
 
     @Id

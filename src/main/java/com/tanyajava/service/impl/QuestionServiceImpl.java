@@ -25,7 +25,7 @@ public class QuestionServiceImpl implements QuestionService{
 
     @Autowired private QuestionDao questionDao;
 
-    @Transactional
+    @Transactional(readOnly=false)
     public void save(Question question) {
         questionDao.save(question);
     }

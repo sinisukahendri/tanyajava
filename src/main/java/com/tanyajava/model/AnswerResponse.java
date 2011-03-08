@@ -22,7 +22,7 @@ import javax.persistence.Temporal;
  * @author ifnu
  */
 @Entity
-@Table(name="ANSWER_RESPONSE")
+@Table(name="T_ANSWER_RESPONSE")
 public class AnswerResponse implements Serializable {
 
     @Id
@@ -35,7 +35,7 @@ public class AnswerResponse implements Serializable {
     private String response;
 
     @ManyToOne(optional=false)
-    @JoinColumn(name="USER_D")
+    @JoinColumn(name="USER_ID")
     private User user;
 
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
