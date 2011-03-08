@@ -6,7 +6,6 @@
 package com.tanyajava.dao;
 
 import com.tanyajava.dao.base.BaseDaoHibernate;
-import com.tanyajava.model.Category;
 import com.tanyajava.model.Question;
 import com.tanyajava.model.Tag;
 import java.util.List;
@@ -40,15 +39,6 @@ public class QuestionDao extends BaseDaoHibernate<Question>{
         return sessionFactory.getCurrentSession()
                 .createQuery("from Question q left join fetch q.tags t where t=:tag")
                 .setEntity("tag", tag)
-                .setFirstResult(start)
-                .setMaxResults(num)
-                .list();
-    }
-
-    public List<Question> getQuestion(Category category, int start, int num) {
-        return sessionFactory.getCurrentSession()
-                .createQuery("from Question q left join fetch q.categories c where c=:category")
-                .setEntity("category", category)
                 .setFirstResult(start)
                 .setMaxResults(num)
                 .list();

@@ -6,11 +6,11 @@
 package com.tanyajava.service.impl;
 
 import com.tanyajava.dao.QuestionDao;
-import com.tanyajava.model.Category;
 import com.tanyajava.model.Question;
 import com.tanyajava.model.Tag;
 import com.tanyajava.service.QuestionService;
 import java.util.List;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,7 +36,13 @@ public class QuestionServiceImpl implements QuestionService{
     }
 
     public Question getQuestion(Long id) {
-        return questionDao.findById(id);
+        Question q = questionDao.findById(id);
+        Hibernate.initialize(q.getTags());
+        Hibernate.initialize(q.getAnswers());
+        if(q.getAnswer() != null){
+            q.getAnswers().remove(q.getAnswer());
+        }
+        return q;
     }
 
     public List<Question> getQuestion(int start, int num) {
@@ -49,10 +55,6 @@ public class QuestionServiceImpl implements QuestionService{
 
     public List<Question> getQuestion(Tag tag, int start, int num) {
         return questionDao.getQuestion(tag,start,num);
-    }
-
-    public List<Question> getQuestion(Category category, int start, int num) {
-        return questionDao.getQuestion(category,start,num);
     }
 
 }

@@ -25,4 +25,11 @@ public class TagDao extends BaseDaoHibernate<Tag>{
                 .list();
     }
 
+    public Tag findByName(String name) {
+        return (Tag) sessionFactory.getCurrentSession()
+                .createQuery("from Tag t where t.name=:name")
+                .setParameter("name", name)
+                .uniqueResult();
+    }
+
 }

@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -28,6 +29,10 @@ public class Answer implements Serializable{
     @GeneratedValue
     @Column(name="ANSWER_ID")
     private Long id;
+
+    @Lob
+    @Column(name="ANSWER")
+    private String answer;
 
     @ManyToOne(optional=false)
     @JoinColumn(name="QUESTION_ID",referencedColumnName="QUESTION_ID")
@@ -93,6 +98,36 @@ public class Answer implements Serializable{
 
     public void setVotedUp(Long votedUp) {
         this.votedUp = votedUp;
+    }
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Answer other = (Answer) obj;
+        if (this.id != other.id && (this.id == null || !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 83 * hash + (this.id != null ? this.id.hashCode() : 0);
+        return hash;
     }
 
     

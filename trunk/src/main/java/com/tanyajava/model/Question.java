@@ -17,6 +17,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 
@@ -44,16 +46,17 @@ public class Question implements Serializable{
     private String question;
 
     @ManyToMany
-    @JoinTable(name="QUESTION_CATEGORY",
-        joinColumns=@JoinColumn(name="QUESTION_ID"),
-        inverseJoinColumns=@JoinColumn(name="CATEGORY_ID"))
-    private List<Category> categories;
-
-    @ManyToMany
     @JoinTable(name="QUESTION_TAGS",
         joinColumns=@JoinColumn(name="QUESTION_ID"),
         inverseJoinColumns=@JoinColumn(name="TAG_ID"))
     private List<Tag> tags;
+
+    @OneToMany
+    private List<Answer> answers;
+
+    @OneToOne
+    @JoinColumn(name="ANSWER_ID")
+    private Answer answer;
 
     @ManyToOne
     @JoinColumn(name="USER_ID",referencedColumnName="USER_ID",nullable=false)
@@ -75,14 +78,6 @@ public class Question implements Serializable{
 
     public void setAnswered(Boolean answered) {
         this.answered = answered;
-    }
-
-    public List<Category> getCategories() {
-        return categories;
-    }
-
-    public void setCategories(List<Category> categories) {
-        this.categories = categories;
     }
 
     public Date getCreatedDate() {
@@ -147,6 +142,22 @@ public class Question implements Serializable{
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public Answer getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(Answer answer) {
+        this.answer = answer;
+    }
+
+    public List<Answer> getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(List<Answer> answers) {
+        this.answers = answers;
     }
 
 

@@ -5,11 +5,9 @@
 
 package com.tanyajava.service.impl;
 
-import com.tanyajava.dao.CategoryDao;
 import com.tanyajava.dao.CompanyRoleDao;
 import com.tanyajava.dao.ProjectStageDao;
 import com.tanyajava.dao.TagDao;
-import com.tanyajava.model.Category;
 import com.tanyajava.model.Tag;
 import com.tanyajava.service.MasterService;
 import com.tanyajava.model.CompanyRole;
@@ -28,26 +26,8 @@ import org.springframework.transaction.annotation.Transactional;
 public class MasterServiceImpl implements MasterService{
 
     @Autowired private TagDao tagDao;
-    @Autowired private CategoryDao categoryDao;
     @Autowired private ProjectStageDao projectStageDao;
     @Autowired private CompanyRoleDao companyRoleDao;
-
-    @Transactional
-    public void save(Category category) {
-        categoryDao.save(category);
-    }
-
-    public void delete(Category category) {
-        categoryDao.delete(category);
-    }
-
-    public Category getCategory(Long id) {
-        return categoryDao.findById(id);
-    }
-
-    public List<Category> getCategory(int start, int num) {
-        return categoryDao.getCategory(start, num);
-    }
 
     @Transactional
     public void save(Tag tag) {
@@ -61,6 +41,10 @@ public class MasterServiceImpl implements MasterService{
 
     public Tag getTag(Long id) {
         return tagDao.findById(id);
+    }
+
+    public Tag getTag(String name) {
+        return tagDao.findByName(name);
     }
 
     public List<Tag> getTag(int start, int num) {
