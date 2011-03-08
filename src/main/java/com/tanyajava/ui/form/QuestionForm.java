@@ -14,15 +14,11 @@ public class QuestionForm {
     private String question;
     private String title;
     private String tags;
-    private String categories;
 
-    public String getCategories() {
-        return categories;
-    }
+    private String userName;
+    private String email;
+    private String homePage;
 
-    public void setCategories(String categories) {
-        this.categories = categories;
-    }
 
     public String getQuestion() {
         return question;
@@ -46,6 +42,30 @@ public class QuestionForm {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getHomePage() {
+        return homePage;
+    }
+
+    public void setHomePage(String homePage) {
+        this.homePage = homePage;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
 }
