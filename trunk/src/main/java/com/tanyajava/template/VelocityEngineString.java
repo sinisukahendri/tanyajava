@@ -31,7 +31,6 @@ public class VelocityEngineString {
     private DownloadService downloadService;
     private final Map<String, SimpleNode> simpleNodeMap = new HashMap<String, SimpleNode>();
 
-
     public void init() {
         
         RuntimeServices runtimeServices = RuntimeSingleton.getRuntimeServices();

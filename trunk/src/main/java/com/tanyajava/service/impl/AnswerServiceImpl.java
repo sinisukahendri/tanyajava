@@ -25,12 +25,12 @@ public class AnswerServiceImpl implements AnswerService {
     @Autowired
     private AnswerDao answerDao;
 
-    @Transactional
+    @Transactional(readOnly=false)
     public void save(Answer answer) {
         answerDao.save(answer);
     }
 
-    @Transactional
+    @Transactional(readOnly=false)
     public void delete(Answer answer) {
         answerDao.delete(answer);
     }

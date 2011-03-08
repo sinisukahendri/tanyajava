@@ -15,22 +15,19 @@
  */
 package com.tanyajava.ui.form;
 
-import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-public class SignUpForm {
+public class SignupForm {
 
-	@NotEmpty
-	private String username;
+    @NotEmpty
+    private String username;
 
-        @NotEmpty
-	@Size(min = 6, message = "must be at least 6 characters")
-	private String email;
-
-        @NotEmpty
-        @Size(min = 6, message = "must be at least 6 characters")
-	private String homePage;
+    @NotEmpty
+    private String email;
+    
+    @NotEmpty
+    private String homePage;
 
     public String getEmail() {
         return email;
@@ -55,6 +52,4 @@ public class SignUpForm {
     public void setUsername(String username) {
         this.username = username;
     }
-
-
 }

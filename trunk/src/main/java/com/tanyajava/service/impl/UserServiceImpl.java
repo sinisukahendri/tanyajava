@@ -24,12 +24,12 @@ public class UserServiceImpl implements UserService {
 
     @Autowired private UserDao userDao;
 
-    @Transactional
+    @Transactional(readOnly=false)
     public void save(User user) {
         userDao.save(user);
     }
 
-    @Transactional
+    @Transactional(readOnly=false)
     public void delete(User user) {
         userDao.delete(user);
     }
