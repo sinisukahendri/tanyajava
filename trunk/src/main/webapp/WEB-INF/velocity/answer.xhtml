@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="MacRoman"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=MacRoman"/>
+        <title>Menjawab Pertanyaan</title>
+    </head>
+    <body>
+        <p>
+            <form action="" method="post">
+                $question.question
+                <br/>
+                $question.answers.size jawaban
+                <br/>
+                #foreach($answer in $question.answers)
+                    if($question.answer!= null)
+                        $question.answer.answer
+                    #else
+                        $answer.answer
+                    #end
+                    <br/>
+                #end
+                Jawaban Anda : <br/>
+                <textarea name="answer" cols="40" rows="15"></textarea>
+                <br/>
+                #if($login == false)
+                    <a href ="/signin">Sign In</a>
+                    <br/>
+                    atau
+                    <table>
+                        <tr>
+                            <td>Nama</td>
+                            <td><input type="text" name="userName"/></td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td><input type="text" name="email"/></td>
+                        </tr>
+                        <tr>
+                            <td>Blog/Linkedin/Twitter/Facebook</td>
+                            <td><input type="text" name="homePage"/></td>
+                        </tr>
+                    </table>
+                #end
+            <input type="submit" name="submit" value="Kirim Jawaban"/>
+            </form>
+        </p>
+    </body>
+</html>
