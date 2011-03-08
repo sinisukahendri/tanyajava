@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="MacRoman"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=MacRoman"/>
+        <title>TODO supply a title</title>
+    </head>
+    <body>
+        <p>
+            #if($login == false)
+            <a href="/connect/facebook/signup">facebook</a>
+            <a href="/connect/twitter/signup">twitter</a>
+            #else
+            <form action="" method="post">
+                <table>
+                    <tr>
+                        <td>Nama</td>
+                        <td><input type="text" name="userName" value="$!signUpFormuserName"/></td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td><input type="text" name="email" value="$!email"/></td>
+                    </tr>
+                    <tr>
+                        <td>Blog/Linkedin/Twitter/Facebook</td>
+                        <td><input type="text" name="homePage"/></td>
+                    </tr>
+                </table>
+                <input type="submit" name="submit" value="Kirim Pertanyaan"/>
+            </form>
+
+            #end
+        </p>
+    </body>
+</html>
