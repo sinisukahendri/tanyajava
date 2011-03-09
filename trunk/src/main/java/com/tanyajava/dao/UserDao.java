@@ -35,4 +35,11 @@ public class UserDao extends BaseDaoHibernate<User>{
                 .list();
     }
 
+    public User getUserByEmail(String email){
+        return (User) sessionFactory.getCurrentSession()
+                .createQuery("from User u where u.email=:email")
+                .setParameter("email", email)
+                .uniqueResult();
+    }
+
 }

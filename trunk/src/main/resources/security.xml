@@ -12,7 +12,10 @@
         <intercept-url pattern="/favicon.ico" access="permitAll" />
         <intercept-url pattern="/resources/**" access="permitAll" />
         <intercept-url pattern="/signin/**" access="permitAll" />
+        <intercept-url pattern="/ask/**" access="permitAll" />
+        <intercept-url pattern="/index/**" access="permitAll" />
         <intercept-url pattern="/signup/**" access="permitAll" />
+        <intercept-url pattern="/q/**" access="permitAll" />
         <intercept-url pattern="/**" access="isAuthenticated()"  />
     </http>
 

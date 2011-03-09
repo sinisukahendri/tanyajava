@@ -32,7 +32,7 @@ public class Tag implements Serializable {
     @Column(name="TAG_NAME",length=20,unique=true)
     private String name;
 
-    @Column(name="ASSIGNED",length=20,unique=true)
+    @Column(name="ASSIGNED",length=20)
     private Long assigned;
 
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)

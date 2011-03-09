@@ -9,6 +9,7 @@ import com.tanyajava.dao.base.BaseDaoHibernate;
 import com.tanyajava.model.Question;
 import com.tanyajava.model.Tag;
 import java.util.List;
+import org.hibernate.Hibernate;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -20,7 +21,7 @@ public class QuestionDao extends BaseDaoHibernate<Question>{
 
     public List<Question> getQuestion(int start, int num) {
         return sessionFactory.getCurrentSession()
-                .createQuery("from Question q")
+                .createQuery("from Question q left join fetch q.tags")
                 .setFirstResult(start)
                 .setMaxResults(num)
                 .list();
@@ -29,7 +30,7 @@ public class QuestionDao extends BaseDaoHibernate<Question>{
     public List<Question> getQuestion(String keyword, int start, int num) {
         //TODO implementasi fulltext search
         return sessionFactory.getCurrentSession()
-                .createQuery("from Question q")
+                .createQuery("from Question q left join fetch q.tags")
                 .setFirstResult(start)
                 .setMaxResults(num)
                 .list();
