@@ -6,6 +6,7 @@
 package com.tanyajava.service.impl;
 
 import com.tanyajava.dao.QuestionDao;
+import com.tanyajava.dao.UserDao;
 import com.tanyajava.model.Question;
 import com.tanyajava.model.Tag;
 import com.tanyajava.service.QuestionService;
@@ -24,9 +25,13 @@ import org.springframework.transaction.annotation.Transactional;
 public class QuestionServiceImpl implements QuestionService{
 
     @Autowired private QuestionDao questionDao;
+    @Autowired private UserDao userDao;
 
     @Transactional(readOnly=false)
     public void save(Question question) {
+        if(question.getUser()!=null && question.getUser().getId() == null){
+            userDao.save(question.getUser());
+        }
         questionDao.save(question);
     }
 

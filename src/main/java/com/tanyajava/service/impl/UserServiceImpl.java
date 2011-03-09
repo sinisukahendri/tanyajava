@@ -46,4 +46,8 @@ public class UserServiceImpl implements UserService {
         return userDao.getUser(badge,start,num);
     }
 
+    public User getUserByEmail(String email) {
+        return userDao.getUserByEmail(email);
+    }
+
 }
