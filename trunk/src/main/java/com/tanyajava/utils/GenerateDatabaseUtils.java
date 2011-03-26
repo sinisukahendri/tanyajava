@@ -27,9 +27,7 @@ public class GenerateDatabaseUtils {
 
         DataSource dataSource = (DataSource) ctx.getBean("dataSource");
 
-        Configuration cfg = new AnnotationConfiguration().configure("hibernate.cfg.xml")
-                .setProperty("hibernate.dialect",
-                "org.hibernate.dialect.MySQLInnoDBDialect");
+        Configuration cfg = new AnnotationConfiguration().configure("hibernate.cfg.xml");
 
         Connection conn = dataSource.getConnection();
         new SchemaExport(cfg, conn).create(true, true);
