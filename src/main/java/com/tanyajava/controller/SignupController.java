@@ -1,8 +1,8 @@
 package com.tanyajava.controller;
 
-import com.tanyajava.ui.form.SignupForm;
 import com.tanyajava.model.User;
 import com.tanyajava.service.UserService;
+import com.tanyajava.ui.form.SignupForm;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 
