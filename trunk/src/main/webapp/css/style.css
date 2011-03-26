@@ -73,7 +73,7 @@ p {
 nav {
 	position: absolute;
 	width: 960px;
-	background: url("images/navbgr2.png");
+	background: url("../images/navbgr2.png");
 	}
 
 nav ul {
@@ -114,7 +114,7 @@ nav ul li.selected a {
 	margin-top: 25px;
 	width: 960px;
 	height: 200px;
-	background: #82d9fd url("images/introimage.png") repeat-x;
+	background: #82d9fd url("../images/introimage.png") repeat-x;
 	z-index:-1;
 	
 /* curved border radius */
