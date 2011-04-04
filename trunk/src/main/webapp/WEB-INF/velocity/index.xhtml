@@ -10,33 +10,8 @@ and open the template in the editor.
         <title>Silahkan bertanya tentang java</title>
     </head>
     <body>
-
-        <p class="learnmore"><a href="ask">bertanya</a></p>
-        <table>
-            #foreach($question in $questionList)
-            <tr>
-                <td>#if($question.answered)
-                        terjawab
-                    #else
-                        terbuka
-                    #end
-                </td>
-                <td>
-                    <table>
-                        <tr>
-                            <td colspan="3"><a href="q/$question.id/$question.url">$question.title</a></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                #foreach($tag in $question.tags)
-                                    $tag.name 
-                                #end
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-            #end
-        </table>
+        <p>Tanya Java adalah website tempat anda bisa bertanya tentang java dan software development secara lebih luas.</p>
+        <p>Saat ini website sedang dalam proses development.</p>
+        <p>Sebagai salam perkenalan dari kami silahkan lihat kode website ini di <a href="http://code.google.com/p/tanyajava">googlecode</a> dan download <a href="/download/javadesktop">buku Java Desktop</a>, gratiss!!</p>
     </body>
 </html>

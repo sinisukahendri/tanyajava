@@ -39,6 +39,11 @@ public class DownloadController {
     @Autowired private DownloadService downloadService;
     @Autowired private EmailSenderService emailSenderService;
 
+    @RequestMapping(value="/download", method=RequestMethod.GET)
+    public String viewDownloadList(Model model){
+        model.addAttribute("downloadItems",downloadService.getDownloadItems());
+        return "/download/download_list";
+    }
     @RequestMapping(value="/download/{id}", method=RequestMethod.GET)
     public String viewDownload(@PathVariable String id, Model model){
         model.addAttribute("companyRoles",masterService.getCompanyRoles());
