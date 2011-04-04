@@ -21,7 +21,7 @@ import javax.persistence.Table;
 public class DownloadItem implements Serializable {
 
     @Id
-    @Column(name="DOWNLOAD_ITEM_ID",length=10)
+    @Column(name="DOWNLOAD_ITEM_ID",length=15)
     private String id;
 
     @Column(name="TITLE",length=100)

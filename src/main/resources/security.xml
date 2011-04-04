@@ -17,6 +17,7 @@
         <intercept-url pattern="/signup/**" access="permitAll" />
         <intercept-url pattern="/css/**" access="permitAll" />
         <intercept-url pattern="/images/**" access="permitAll" />
+        <intercept-url pattern="/download/**" access="permitAll" />
         <intercept-url pattern="/q/**" access="permitAll" />
         <intercept-url pattern="/**" access="isAuthenticated()"  />
     </http>

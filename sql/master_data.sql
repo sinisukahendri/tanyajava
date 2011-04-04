@@ -9,7 +9,7 @@ Ketentuan : Buku ini akan selalu gratis untuk anda miliki dan sebarkan baik seca
 
 Dengan Hormat,
 Tim tanyajava.com','Download Buku Java Desktop - Ifnu Bima','tanyajava <tanya.jv@gmail.com>',
-'/var/tanyajava-download-file/Java Desktop - Ifnu Bima.pdf','application/pdf','Java Desktip - Ifnu Bima.pdf');
+'/var/tanyajava-download-file/Java Desktop - Ifnu Bima.pdf','application/pdf','Java Desktop - Ifnu Bima.pdf');
 
 
 insert into T_COMPANY_ROLE(COMPANY_ROLE) values ('Pelajar');
