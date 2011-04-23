@@ -81,6 +81,7 @@ public class DownloadController {
             downloadService.save(download, id);
             
         } else if(result.hasErrors()){
+            model.addAttribute("download", download);
             return "/download/download";
         }
         return "redirect:/download/done";
@@ -99,7 +100,7 @@ public class DownloadController {
                 d.setStatus(Download.STATUS_DOWNLOADED);
                 downloadService.update(d);
                 response.setContentType(item.getFileMimeType());
-                response.setHeader("Content-Disposition", "attachment; filename=" + item.getFileName());
+                response.setHeader("Content-Disposition", "attachment; filename=\"" + item.getFileName() + "\"");
                 inputStream = new BufferedInputStream(new FileInputStream(item.getFileAbsolutePath()));
                 byte[] buffer = new byte[1024];
                 int bytesRead;
