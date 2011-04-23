@@ -5,13 +5,21 @@
 
 package com.tanyajava.ui.form;
 
+import java.io.Serializable;
+import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.NotEmpty;
+
 /**
  *
  * @author ifnu
  */
-public class QuestionForm {
+public class QuestionForm implements Serializable{
 
+    @NotEmpty
     private String question;
+
+    @NotEmpty
+    @Size(min=1,max=200)
     private String title;
     private String tags;
 

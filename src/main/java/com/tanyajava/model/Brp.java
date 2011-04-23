@@ -32,7 +32,7 @@ public class Brp implements Serializable {
     private User assigner;
 
     @ManyToOne
-    @JoinColumn(name="USER_ASSIGNEe_ID")
+    @JoinColumn(name="USER_ASSIGNEE_ID")
     private User assignee;
 
     public User getAssignee() {

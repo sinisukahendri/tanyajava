@@ -107,6 +107,12 @@ public class Answer implements Serializable{
     public void setAnswer(String answer) {
         this.answer = answer;
     }
+    
+    public Long getTotalVote(){
+        Long total = votedUp - votedDown;
+        if(total < 0) return 0l;
+        return total;
+    }
 
     @Override
     public boolean equals(Object obj) {

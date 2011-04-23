@@ -18,9 +18,16 @@ import java.util.Date;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -42,6 +49,37 @@ public class QuestionController {
         return "/ask";
     }
     
+    @RequestMapping(value="/ask",method=RequestMethod.POST)
+    public String ask(@Valid @ModelAttribute("question") QuestionForm questionForm,
+        BindingResult result,
+        Model model){
+        //check if user already loged in or not
+        if(!validate(questionForm, result)){
+            return "/ask";
+        }
+        User u = createUser(questionForm);
+        Question q = createQuestion(questionForm,u);
+        questionService.save(q);
+        return "redirect:/index";
+    }
+    
+    private boolean validate(QuestionForm questionForm, BindingResult result){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if(auth instanceof AnonymousAuthenticationToken){
+            //check for username and email
+            if(!StringUtils.hasText(questionForm.getUserName())){
+                result.addError(new FieldError("question","userName", "silahkan isi username"));
+            } 
+            if(!StringUtils.hasText(questionForm.getEmail())){
+                result.addError(new FieldError("question","email", "silahkan isi email"));
+            }
+            if(result.hasErrors()){
+                return false;
+            }
+        }
+        return true;
+    }
+    
     @RequestMapping(value="/q/{id}/{url}",method=RequestMethod.GET)
     public String q(@PathVariable(value="id") Long id,
             @PathVariable(value="url")String url, Model model){
@@ -50,13 +88,6 @@ public class QuestionController {
         return "/question";
     }
 
-    @RequestMapping(value="/ask",method=RequestMethod.POST)
-    public String ask(@Valid QuestionForm questionForm){
-        User u = createUser(questionForm);
-        Question q = createQuestion(questionForm,u);
-        questionService.save(q);
-        return "redirect:/index";
-    }
 
     private User createUser(QuestionForm questionForm){
         User u = userService.getUserByEmail(questionForm.getEmail());

@@ -22,15 +22,15 @@ public class IndexController {
     @Autowired private QuestionService questionService;
 
     @RequestMapping(value="/index",method=RequestMethod.GET)
-    public Model index(Model model){
+    public String index(Model model){
 
         //most viewed question today
         //search
         //tag cloud
         //new badge user
         //trending
-        model.addAttribute("questionList", questionService.getQuestion(0, 20));
-        return model;
+//        model.addAttribute("questionList", questionService.getQuestion(0, 20));
+        return "/index_kosong";
     }
 
 }

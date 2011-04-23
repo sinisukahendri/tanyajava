@@ -10,8 +10,49 @@ and open the template in the editor.
         <title>question</title>
     </head>
     <body>
+            $question.title
         <p>
-            question
+            <pre>
+                $question.question
+            </pre>
         </p>
+        <p>|
+            #foreach($tag in $question.tags)
+                $tag.name $tag.assigned | 
+            #end
+        </p>
+        <br/>
+        #if($question.answers.size > 0)
+            $question.answers.size jawaban
+            <br/>
+            #foreach($answer in $question.answers)
+            <div id="vote">
+                <span><a href="#$answer.id" id="votedUp">mantab!</a></span><br/>
+                <span id="">$answer.totalVote</span><br/>
+                <span><a href="#$answer.id" id="">jelek</a></span>
+            </div>
+            <div id="answer">
+                <pre>
+                    $answer.answer
+                </pre>
+            </div>
+            #end
+        #end
+        <table></table>
+        Jawaban kamu
+        <form name="answer">
+            <textarea name="answer" cols="60" rows="20"></textarea>
+        </form>
+        <input type="button" name="answerButton" value="jawab"/>
     </body>
+    <script type="javascript">
+        $(document).ready(function(){
+            $("#votedUp").click(function(e){
+                e.preventDefault();
+                var id = $(this).attr("ahref");
+                id = id.substr(1,id.length());
+                
+            });
+        });
+    </script>
 </html>
