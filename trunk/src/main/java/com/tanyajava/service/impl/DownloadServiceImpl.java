@@ -12,6 +12,7 @@ import com.tanyajava.service.DownloadService;
 import com.tanyajava.model.Download;
 import com.tanyajava.model.DownloadItem;
 import java.util.List;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -29,6 +30,8 @@ public class DownloadServiceImpl implements DownloadService {
     @Autowired private SequenceDao sequenceDao;
     @Autowired private EmailSenderService emailSenderService;
     @Autowired private DownloadItemDao downloadItemDao;
+    
+    private static final Logger log = Logger.getLogger(DownloadServiceImpl.class);
 
     public Download getDownload(String id) {
         return downloadDao.getById(id);
@@ -44,12 +47,13 @@ public class DownloadServiceImpl implements DownloadService {
             download.setId(seq);
             download.setDownloadItem(downloadItem);
             downloadDao.save(download);
+            log.debug("successfuly insert download request");
         } else {
             downloadDao.update(download);
         }
         //sekalian send email
         emailSenderService.sendDownloadEmail(download, downloadItem);
-        
+        log.debug("successfuly send email");
     }
 
     public DownloadItem getDownloadItem(String id) {
