@@ -29,28 +29,34 @@ public class SequenceDao extends BaseDaoHibernate<Sequence>{
             save(sequence);
             return sequence.getSequance();
         }
-        
+        String nextSequence = getNextSequence(sequence);
+        sequence.setSequance(nextSequence);
+        this.save(sequence);
+        return nextSequence;
+    }
+    
+    public String getNextSequence(Sequence sequence){
         String lastSequence = sequence.getSequance();
-        char c = sequence.getSequance().charAt(sequence.getSequance().length()-1);
+        char c = lastSequence.charAt(lastSequence.length()-1);
+        String nextSequence = null;
         if((c >= '0' && c < '9')
                 || (c>='a' && c < 'z')) {
             c++;
-            lastSequence = replaceLastChar(lastSequence, c);
+            nextSequence = replaceLastChar(lastSequence, c);
         } else if (c == '9') {
             c = 'a';
-            lastSequence = replaceLastChar(lastSequence, c);
+            nextSequence = replaceLastChar(lastSequence, c);
         } else if (c == 'z'){
-            lastSequence += '0';
+            nextSequence += '0';
         }
-        sequence.setSequance(lastSequence);
-        save(sequence);
-        return lastSequence;
+        return nextSequence;
     }
+    
     public String replaceLastChar(String str, char c){
         if(str.length() == 1){
             return String.valueOf(c);
         }
-        String replaced = str.substring(0,str.length()-2);
+        String replaced = str.substring(0,str.length()-1);
         return replaced + c;
     }
 

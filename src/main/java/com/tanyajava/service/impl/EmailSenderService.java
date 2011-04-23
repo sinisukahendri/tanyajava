@@ -11,12 +11,12 @@ import com.tanyajava.template.VelocityEngineString;
 import java.io.StringWriter;
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
-import org.apache.velocity.runtime.RuntimeServices;
 import org.apache.velocity.runtime.RuntimeSingleton;
 import org.apache.velocity.runtime.parser.node.SimpleNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -32,6 +32,7 @@ public class EmailSenderService{
     public static final String CTX_NAME="name";
     public static final String CTX_ID="id";
 
+    @Async
     public void sendDownloadEmail(Download download, DownloadItem downloadItem){
         SimpleNode simpleNode = velocityEngine.getSimpleNode(downloadItem);
         assert simpleNode != null;
