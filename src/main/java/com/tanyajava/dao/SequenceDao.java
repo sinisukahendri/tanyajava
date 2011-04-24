@@ -38,18 +38,48 @@ public class SequenceDao extends BaseDaoHibernate<Sequence>{
     public String getNextSequence(Sequence sequence){
         String lastSequence = sequence.getSequance();
         char c = lastSequence.charAt(lastSequence.length()-1);
-        String nextSequence = null;
+        if(lastSequence.length()==1){
+            c = lastSequence.charAt(0);
+        }
+        String nextSequence = lastSequence;
+        if (c == 'z'){
+            char[] sequenceChar =  lastSequence.toCharArray();
+            boolean allZ = true;
+            for(int i = lastSequence.length()-1; i >=0; i--){
+                if(sequenceChar[i]!='z'){
+                    allZ = false;
+                    c = getNextChar(sequenceChar[i]);
+                    if(i > 0){
+                        nextSequence = lastSequence.substring(0, i-1) + c 
+                            + lastSequence.substring(i+1, lastSequence.length())
+                            + '0';
+                    } else {
+                        nextSequence =  c + lastSequence.substring(i+2, lastSequence.length())
+                            + '0';
+                    }
+                    return nextSequence;
+                } else {
+                    sequenceChar[i] = '0';
+                }
+            }
+            if(allZ){
+                nextSequence = "1" + new String(sequenceChar);
+            }
+        } else {
+            c = getNextChar(c);
+            nextSequence = replaceLastChar(lastSequence, c);
+        }
+        return nextSequence;
+    }
+    
+    public char getNextChar(char c){
         if((c >= '0' && c < '9')
                 || (c>='a' && c < 'z')) {
             c++;
-            nextSequence = replaceLastChar(lastSequence, c);
         } else if (c == '9') {
             c = 'a';
-            nextSequence = replaceLastChar(lastSequence, c);
-        } else if (c == 'z'){
-            nextSequence += '0';
         }
-        return nextSequence;
+        return c;
     }
     
     public String replaceLastChar(String str, char c){
