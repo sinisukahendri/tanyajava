@@ -9,19 +9,16 @@ import com.tanyajava.service.DownloadService;
 import com.tanyajava.service.MasterService;
 import com.tanyajava.model.Download;
 import com.tanyajava.model.DownloadItem;
-import com.tanyajava.service.impl.EmailSenderService;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,7 +36,8 @@ public class DownloadController {
 
     @Autowired private MasterService masterService;
     @Autowired private DownloadService downloadService;
-    @Autowired private EmailSenderService emailSenderService;
+    
+    private static final Logger logger = Logger.getLogger(DownloadController.class);
 
     @RequestMapping(value="/download", method=RequestMethod.GET)
     public String viewDownloadList(Model model){
@@ -93,12 +91,16 @@ public class DownloadController {
     public String getDownloadHead(@PathVariable String id,
             @PathVariable String iddownload,
             HttpServletResponse response){
+        logger.debug("HEAD called");
         Download d = downloadService.getDownload(iddownload);
-        DownloadItem item = d.getDownloadItem();
-        response.setContentType(item.getFileMimeType());
-        response.setHeader("Content-Disposition", "attachment; filename=\"" + item.getFileName() + "\"");
-        File f = new File(item.getFileAbsolutePath());
-        response.setContentLength((int)f.length());
+        if(d!=null && d.getDownloadItem()!=null){
+            DownloadItem item = d.getDownloadItem();
+            response.setContentType(item.getFileMimeType());
+            response.setHeader("Content-Disposition", "attachment; filename=\"" + item.getFileName() + "\"");
+            File f = new File(item.getFileAbsolutePath());
+            response.setContentLength((int)f.length());
+            logger.debug("size : " + f.length());
+        }
         return null;
     }
     
@@ -107,9 +109,8 @@ public class DownloadController {
             @PathVariable String iddownload,
             HttpServletResponse response){
         Download d = downloadService.getDownload(iddownload);
-        DownloadItem item = d.getDownloadItem();
-//        if(d != null && d.getStatus().equals(Download.STATUS_CREATED)){
         if(d != null && d.getCount() < 10){
+            DownloadItem item = d.getDownloadItem();
             BufferedInputStream inputStream = null;
             try {
                 d.setDownloadedDate(new Date());
@@ -118,7 +119,10 @@ public class DownloadController {
                 downloadService.update(d);
                 response.setContentType(item.getFileMimeType());
                 response.setHeader("Content-Disposition", "attachment; filename=\"" + item.getFileName() + "\"");
-                inputStream = new BufferedInputStream(new FileInputStream(item.getFileAbsolutePath()));
+                File f = new File(item.getFileAbsolutePath());
+                response.setContentLength((int)f.length());
+                inputStream = new BufferedInputStream(new FileInputStream(f));
+                logger.debug("content length : " + f.length());
                 byte[] buffer = new byte[1024];
                 int bytesRead;
                 OutputStream outputStream = response.getOutputStream();
@@ -126,14 +130,16 @@ public class DownloadController {
                     outputStream.write(buffer, 0, bytesRead);
                 }
             } catch (FileNotFoundException ex) {
-                Logger.getLogger(DownloadController.class.getName()).log(Level.SEVERE, null, ex);
+                logger.error(ex);
             } catch (IOException ex) {
-                Logger.getLogger(DownloadController.class.getName()).log(Level.SEVERE, null, ex);
+                logger.error(ex);
             } finally {
                 try {
-                    inputStream.close();
+                    if(inputStream!=null){
+                        inputStream.close();
+                    }
                 } catch (IOException ex) {
-                    Logger.getLogger(DownloadController.class.getName()).log(Level.SEVERE, null, ex);
+                    logger.error(ex);
                 }
             }
             return null;
