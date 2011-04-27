@@ -86,6 +86,9 @@ public class Download implements Serializable {
     @Column(name="STATUS", length=1)
     private String status = STATUS_CREATED;
 
+    @Column(name="DOWNLOAD_COUNT")
+    private Integer count = 0;
+    
     @ManyToOne
     @JoinColumn(name="DOWNLOAD_ITEM_FK",nullable=false)
     private DownloadItem downloadItem;
@@ -208,6 +211,14 @@ public class Download implements Serializable {
 
     public void setDownloadItem(DownloadItem downloadItem) {
         this.downloadItem = downloadItem;
+    }
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
     }
 
 }
