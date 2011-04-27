@@ -11,9 +11,11 @@ import com.tanyajava.model.Download;
 import com.tanyajava.model.DownloadItem;
 import com.tanyajava.service.impl.EmailSenderService;
 import java.io.BufferedInputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Date;
 import java.util.logging.Level;
@@ -87,17 +89,32 @@ public class DownloadController {
         return "redirect:/download/done";
     }
     
+    @RequestMapping(value="/download/{id}/{iddownload}", method=RequestMethod.HEAD)
+    public String getDownloadHead(@PathVariable String id,
+            @PathVariable String iddownload,
+            HttpServletResponse response){
+        Download d = downloadService.getDownload(iddownload);
+        DownloadItem item = d.getDownloadItem();
+        response.setContentType(item.getFileMimeType());
+        response.setHeader("Content-Disposition", "attachment; filename=\"" + item.getFileName() + "\"");
+        File f = new File(item.getFileAbsolutePath());
+        response.setContentLength((int)f.length());
+        return null;
+    }
+    
     @RequestMapping(value="/download/{id}/{iddownload}", method=RequestMethod.GET)
     public String getDownload(@PathVariable String id,
             @PathVariable String iddownload,
             HttpServletResponse response){
         Download d = downloadService.getDownload(iddownload);
         DownloadItem item = d.getDownloadItem();
-        if(d != null && d.getStatus().equals(Download.STATUS_CREATED)){
+//        if(d != null && d.getStatus().equals(Download.STATUS_CREATED)){
+        if(d != null && d.getCount() < 10){
             BufferedInputStream inputStream = null;
             try {
                 d.setDownloadedDate(new Date());
                 d.setStatus(Download.STATUS_DOWNLOADED);
+                d.setCount(d.getCount() + 1);
                 downloadService.update(d);
                 response.setContentType(item.getFileMimeType());
                 response.setHeader("Content-Disposition", "attachment; filename=\"" + item.getFileName() + "\"");
