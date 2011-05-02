@@ -16,6 +16,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -44,16 +45,32 @@ public class User implements Serializable {
 
     @OneToMany(mappedBy="assignee",cascade=CascadeType.ALL)
     private List<Grp> assignedGrp;
+    
+    private Long totalAssignedGrp = 0l;
 
     @OneToMany(mappedBy="assigner",cascade=CascadeType.ALL)
     private List<Grp> earnedGrp;
-
+    
+    private Long totalEarnedGrp= 0l;
+    
     @OneToMany(mappedBy="assignee",cascade=CascadeType.ALL)
     private List<Brp> assignedBrp;
+    
+    private Long totalAssignedBrp= 0l;
 
     @OneToMany(mappedBy="assigner",cascade=CascadeType.ALL)
     private List<Brp> earnedBrp;
 
+    private Long totalEarnedBrp = 0l;
+    
+    @OneToOne(cascade= CascadeType.ALL)
+    @JoinColumn(name="USER_PREFERENCE_ID",nullable=false)
+    private UserPreference userPreference;
+    
+    public Long getTotalReputation(){
+        return totalEarnedGrp - totalEarnedBrp;
+    }
+    
     public List<Brp> getAssignedBrp() {
         return assignedBrp;
     }
@@ -117,6 +134,46 @@ public class User implements Serializable {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public Long getTotalAssignedBrp() {
+        return totalAssignedBrp;
+    }
+
+    public void setTotalAssignedBrp(Long totalAssignedBrp) {
+        this.totalAssignedBrp = totalAssignedBrp;
+    }
+
+    public Long getTotalAssignedGrp() {
+        return totalAssignedGrp;
+    }
+
+    public void setTotalAssignedGrp(Long totalAssignedGrp) {
+        this.totalAssignedGrp = totalAssignedGrp;
+    }
+
+    public Long getTotalEarnedBrp() {
+        return totalEarnedBrp;
+    }
+
+    public void setTotalEarnedBrp(Long totalEarnedBrp) {
+        this.totalEarnedBrp = totalEarnedBrp;
+    }
+
+    public Long getTotalEarnedGrp() {
+        return totalEarnedGrp;
+    }
+
+    public void setTotalEarnedGrp(Long totalEarnedGrp) {
+        this.totalEarnedGrp = totalEarnedGrp;
+    }
+
+    public UserPreference getUserPreference() {
+        return userPreference;
+    }
+
+    public void setUserPreference(UserPreference userPreference) {
+        this.userPreference = userPreference;
     }
 
 }

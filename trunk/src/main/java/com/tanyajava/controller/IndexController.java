@@ -29,8 +29,8 @@ public class IndexController {
         //tag cloud
         //new badge user
         //trending
-//        model.addAttribute("questionList", questionService.getQuestion(0, 20));
-        return "/index_kosong";
+        model.addAttribute("questionList", questionService.getQuestion(0, 20));
+        return "/index";
     }
 
 }

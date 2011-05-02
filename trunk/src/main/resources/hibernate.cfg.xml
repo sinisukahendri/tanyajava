@@ -17,5 +17,6 @@
     <mapping class="com.tanyajava.model.Sequence"/>
     <mapping class="com.tanyajava.model.Tag"/>
     <mapping class="com.tanyajava.model.User"/>
+    <mapping class="com.tanyajava.model.UserPreference"/>
   </session-factory>
 </hibernate-configuration>

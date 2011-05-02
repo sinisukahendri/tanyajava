@@ -6,6 +6,7 @@
 package com.tanyajava.model;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Column;
@@ -70,8 +71,14 @@ public class Question implements Serializable{
     private Boolean answered = Boolean.FALSE;
 
     @Column(name="VIEWED")
-    private Long viewed;
+    private Long viewed = 0l;
 
+    @Column(name="VOTED")
+    private Long voted = 0l;
+    
+    @Column(name="ANSWER_COUNT")
+    private Long answerCount = 0l;
+            
     public Boolean isAnswered() {
         return answered;
     }
@@ -158,6 +165,41 @@ public class Question implements Serializable{
 
     public void setAnswers(List<Answer> answers) {
         this.answers = answers;
+    }
+
+    public Long getAnswerCount() {
+        return answerCount;
+    }
+
+    public void setAnswerCount(Long answerCount) {
+        this.answerCount = answerCount;
+    }
+
+    public Long getVoted() {
+        return voted;
+    }
+
+    public void setVoted(Long voted) {
+        this.voted = voted;
+    }
+
+    public String getShortQuestion(){
+        if(question!=null){
+            if(question.length()>200){
+                return question.substring(0, 200) + ". . . ";
+            }
+            return question;
+        }
+        return "";
+    }
+    
+    public String getCreatedDateTz(){
+        //TODO convert date to user timezone
+        return new SimpleDateFormat("dd MMM yy hh:mm:ss").format(createdDate);
+    }
+    
+    public String getDuration() {
+        return "";
     }
 
 
