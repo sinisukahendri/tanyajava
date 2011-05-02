@@ -8,6 +8,7 @@ package com.tanyajava.controller;
 import com.tanyajava.model.Question;
 import com.tanyajava.model.Tag;
 import com.tanyajava.model.User;
+import com.tanyajava.model.UserPreference;
 import com.tanyajava.service.MasterService;
 import com.tanyajava.service.QuestionService;
 import com.tanyajava.service.UserService;
@@ -16,6 +17,7 @@ import com.tanyajava.utils.UrlUtils;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -26,7 +28,6 @@ import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -95,6 +96,10 @@ public class QuestionController {
             u = new User();
             u.setUsername(questionForm.getUserName());
             u.setEmail(questionForm.getEmail());
+            UserPreference userPreference = new UserPreference();
+            userPreference.setTimeZone(TimeZone.getDefault().getID());
+            userPreference.setDateFormat("dd MMM yy hh:mm:ss");
+            u.setUserPreference(userPreference);
         }
         return u;
     }
