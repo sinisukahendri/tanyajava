@@ -11,20 +11,27 @@ and open the template in the editor.
     </head>
     <body>
         <p>
+            <div>
             <form action="" method="post">
-                $question.question
-                <br/>
-                $question.answers.size jawaban
-                <br/>
+                <div class="question-title">
+                    <h1>$question.question</h1>
+                </div>
+                <div class="votes-left">
+                    <a href="">bagus</a>
+                    <h3>$question.answers.size</h3>
+                    <a href="">bapuk</a>
+                    <a href="">favorit</a>
+                </div>
+                <div class="question-content">
                 #foreach($answer in $question.answers)
-                    if($question.answer!= null)
-                        $question.answer.answer
+                    #if($question.answer!= && $question.answer.id==$answer.id)
+                        <div class="correct-answer">$answer.answer</div> 
                     #else
-                        $answer.answer
+                        <div class="answer">$answer.answer</div>
                     #end
-                    <br/>
                 #end
-                Jawaban Anda : <br/>
+                </div>
+                <div>Jawaban Anda</div>
                 <textarea name="answer" cols="40" rows="15"></textarea>
                 <br/>
                 #if($login == false)
@@ -48,6 +55,10 @@ and open the template in the editor.
                 #end
             <input type="submit" name="submit" value="Kirim Jawaban"/>
             </form>
+           </div>
+            <div>
+                
+            </div>
         </p>
     </body>
 </html>
