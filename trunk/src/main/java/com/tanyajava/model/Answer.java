@@ -113,6 +113,10 @@ public class Answer implements Serializable{
         if(total < 0) return 0l;
         return total;
     }
+    
+    public String getDuration(){
+        return "1 menit";
+    }
 
     @Override
     public boolean equals(Object obj) {

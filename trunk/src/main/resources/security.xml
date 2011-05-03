@@ -22,6 +22,7 @@
         <intercept-url pattern="/contact/**" access="permitAll" />
         <intercept-url pattern="/support/**" access="permitAll" />
         <intercept-url pattern="/q/**" access="permitAll" />
+        <intercept-url pattern="/answer/**" access="permitAll" />
         <intercept-url pattern="/**" access="isAuthenticated()"  />
     </http>
 

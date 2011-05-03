@@ -327,7 +327,18 @@ a.post-tag {
 .reputation-score {
     margin-left: 1px;
 }
-
+/* css inside answer */
+.votecell {
+    vertical-align: top;
+    width: 60px;
+}
+.post-text {
+    font-size: 107%;
+    line-height: 130%;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    width: 660px;
+}
 /*Form css*/
 /* general reset area for this page */
 

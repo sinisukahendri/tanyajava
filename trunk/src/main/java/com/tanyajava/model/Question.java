@@ -73,8 +73,11 @@ public class Question implements Serializable{
     @Column(name="VIEWED")
     private Long viewed = 0l;
 
-    @Column(name="VOTED")
-    private Long voted = 0l;
+    @Column(name="VOTED_UP")
+    private Long votedUp=0l;
+
+    @Column(name="VOTED_DOWN")
+    private Long votedDown=0l;
     
     @Column(name="ANSWER_COUNT")
     private Long answerCount = 0l;
@@ -175,14 +178,26 @@ public class Question implements Serializable{
         this.answerCount = answerCount;
     }
 
-    public Long getVoted() {
-        return voted;
+    public Long getVotedDown() {
+        return votedDown;
     }
 
-    public void setVoted(Long voted) {
-        this.voted = voted;
+    public void setVotedDown(Long votedDown) {
+        this.votedDown = votedDown;
     }
 
+    public Long getVotedUp() {
+        return votedUp;
+    }
+
+    public void setVotedUp(Long votedUp) {
+        this.votedUp = votedUp;
+    }
+
+    public Long getTotalVote(){
+        return votedUp - votedDown;
+    }
+    
     public String getShortQuestion(){
         if(question!=null){
             if(question.length()>200){

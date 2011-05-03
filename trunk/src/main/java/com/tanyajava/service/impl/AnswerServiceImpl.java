@@ -6,6 +6,7 @@
 package com.tanyajava.service.impl;
 
 import com.tanyajava.dao.AnswerDao;
+import com.tanyajava.dao.UserDao;
 import com.tanyajava.model.Answer;
 import com.tanyajava.model.Question;
 import com.tanyajava.service.AnswerService;
@@ -24,9 +25,15 @@ public class AnswerServiceImpl implements AnswerService {
 
     @Autowired
     private AnswerDao answerDao;
+    
+    @Autowired
+    private UserDao userDao;
 
     @Transactional(readOnly=false)
     public void save(Answer answer) {
+        if(answer.getUser()!=null && answer.getUser().getId() == null){
+            userDao.save(answer.getUser());
+        }
         answerDao.save(answer);
     }
 
