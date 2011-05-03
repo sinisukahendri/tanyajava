@@ -44,6 +44,7 @@ public class QuestionServiceImpl implements QuestionService{
         Question q = questionDao.findById(id);
         Hibernate.initialize(q.getTags());
         Hibernate.initialize(q.getAnswers());
+        Hibernate.initialize(q.getUser().getBadges());
         if(q.getAnswer() != null){
             q.getAnswers().remove(q.getAnswer());
         }
@@ -60,6 +61,10 @@ public class QuestionServiceImpl implements QuestionService{
 
     public List<Question> getQuestion(Tag tag, int start, int num) {
         return questionDao.getQuestion(tag,start,num);
+    }
+
+    public Question getSimpleQuestion(Long id) {
+       return questionDao.findById(id);
     }
 
 }

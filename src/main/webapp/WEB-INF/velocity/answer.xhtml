@@ -13,23 +13,73 @@ and open the template in the editor.
         <p>
             <div>
             <form action="" method="post">
-                <div class="question-title">
-                    <h1>$question.question</h1>
-                </div>
-                <div class="votes-left">
-                    <a href="">bagus</a>
-                    <h3>$question.answers.size</h3>
-                    <a href="">bapuk</a>
-                    <a href="">favorit</a>
-                </div>
                 <div class="question-content">
-                #foreach($answer in $question.answers)
-                    #if($question.answer!= && $question.answer.id==$answer.id)
-                        <div class="correct-answer">$answer.answer</div> 
-                    #else
+                    <div class="question-title">
+                        <h1>$question.title</h1>
+                    </div>
+                    <div class="votecell">
+                        <a href="">bagus</a>
+                        <h3>$question.answers.size</h3>
+                        <a href="">bapuk</a>
+                        <a href="">favorit</a>
+                    </div>
+                    <div>
+                        #foreach($tag in $question.tags)
+                            <div class="tags">
+                                <a rel="tag" title="tampilkan pertanyaan yang ditandai '$tag.name'" class="post-tag" href="/q/tag/$tag.name">$tag.name</a> 
+                            </div>
+                        #end
+                        <div>
+                            <a href="/q/$question.id">tautan</a>
+                            <a href="/report/q/$question.id">laporkan</a>
+                        </div>
+                        <div>
+                            <div>ditanyakan $question.duration lalu</div>
+                            <div>
+                                <div>avatar</div>
+                                <div><a href="/u/$question.user.id">$question.user.username</a></div>
+                                #foreach($badge in $question.user.badges)
+                                    <span>$badge.name</span>
+                                    <span>$badge.assigned</span>
+                                #end
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="answer-content">
+                    #foreach($answer in $question.answers)
+                        #if($question.answer!= && $question.answer.id==$answer.id)
+                        <div class="votecell">
+                            <a href="">bagus</a>
+                            <h3>$question.answers.size</h3>
+                            <a href="">bapuk</a>
+                            <a href="">favorit</a>
+                        </div>
+                        #else
+                        <div class="votecell">
+                            <a href="">bagus</a>
+                            <h3>$question.answers.size</h3>
+                            <a href="">bapuk</a>
+                            <a href="">favorit</a>
+                        </div>
+                        #end
                         <div class="answer">$answer.answer</div>
+                        <div>
+                            <a href="/a/$answer.id">tautan</a>
+                            <a href="/report/a/$answer.id">laporkan</a>
+                        </div>
+                        <div>
+                            <div>dijawab $answer.duration lalu</div>
+                            <div>
+                                <div>avatar</div>
+                                <div><a href="/u/$answer.user.id">$answer.user.username</a></div>
+                                #foreach($badge in $answer.user.badges)
+                                    <span>$badge.name</span>
+                                    <span>$badge.assigned</span>
+                                #end
+                            </div>
+                        </div>
                     #end
-                #end
                 </div>
                 <div>Jawaban Anda</div>
                 <textarea name="answer" cols="40" rows="15"></textarea>
