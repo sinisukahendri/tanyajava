@@ -5,13 +5,16 @@
 
 package com.tanyajava.controller;
 
+import com.tanyajava.model.Answer;
 import com.tanyajava.model.Question;
 import com.tanyajava.model.Tag;
 import com.tanyajava.model.User;
 import com.tanyajava.model.UserPreference;
+import com.tanyajava.service.AnswerService;
 import com.tanyajava.service.MasterService;
 import com.tanyajava.service.QuestionService;
 import com.tanyajava.service.UserService;
+import com.tanyajava.ui.form.AnswerForm;
 import com.tanyajava.ui.form.QuestionForm;
 import com.tanyajava.utils.UrlUtils;
 import java.util.ArrayList;
@@ -43,6 +46,7 @@ public class QuestionController {
     @Autowired private MasterService masterService;
     @Autowired private QuestionService questionService;
     @Autowired private UserService userService;
+    @Autowired private AnswerService answerService;
 
     @RequestMapping(value="/ask",method=RequestMethod.GET)
     public String ask(Model model){
@@ -89,7 +93,42 @@ public class QuestionController {
         return "/question";
     }
 
+    @RequestMapping(value = "/q/{id}", method = RequestMethod.POST)
+    public String answering(@PathVariable Long id,
+            @Valid @ModelAttribute("answer") AnswerForm answerForm,
+            BindingResult result,
+            Model model) {
 
+        User u = createUser(answerForm);
+
+        Question q = questionService.getSimpleQuestion(id);
+        
+        Answer answer = new Answer();
+        answer.setAnswer(answerForm.getAnswer());
+        answer.setUser(u);
+        answer.setQuestion(q);
+        answerService.save(answer);
+        
+        q = questionService.getQuestion(id);
+
+        model.addAttribute("question", q);
+        return "redirect:/q/"+id;
+    }
+    
+    private User createUser(AnswerForm answerForm) {
+        User u = userService.getUserByEmail(answerForm.getEmail());
+        if (u == null) {
+            u = new User();
+            u.setUsername(answerForm.getUserName());
+            u.setEmail(answerForm.getEmail());
+            UserPreference userPreference = new UserPreference();
+            userPreference.setTimeZone(TimeZone.getDefault().getID());
+            userPreference.setDateFormat("dd MMM yy hh:mm:ss");
+            u.setUserPreference(userPreference);
+        }
+        return u;
+    }
+    
     private User createUser(QuestionForm questionForm){
         User u = userService.getUserByEmail(questionForm.getEmail());
         if(u == null){

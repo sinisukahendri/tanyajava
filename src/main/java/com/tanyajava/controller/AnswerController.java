@@ -50,40 +50,4 @@ public class AnswerController {
         return "/answer";
     }
 
-    @RequestMapping(value = "/answer/{id}", method = RequestMethod.POST)
-    public String answering(@PathVariable Long id,
-            @Valid @ModelAttribute("answer") AnswerForm answerForm,
-            BindingResult result,
-            Model model) {
-
-        User u = createUser(answerForm);
-        
-
-        Question q = questionService.getSimpleQuestion(id);
-        
-        Answer answer = new Answer();
-        answer.setAnswer(answerForm.getAnswer());
-        answer.setUser(u);
-        answer.setQuestion(q);
-        answerService.save(answer);
-        
-        q = questionService.getQuestion(id);
-
-        model.addAttribute("question", q);
-        return "/question";
-    }
-
-    private User createUser(AnswerForm answerForm) {
-        User u = userService.getUserByEmail(answerForm.getEmail());
-        if (u == null) {
-            u = new User();
-            u.setUsername(answerForm.getUserName());
-            u.setEmail(answerForm.getEmail());
-            UserPreference userPreference = new UserPreference();
-            userPreference.setTimeZone(TimeZone.getDefault().getID());
-            userPreference.setDateFormat("dd MMM yy hh:mm:ss");
-            u.setUserPreference(userPreference);
-        }
-        return u;
-    }
 }
