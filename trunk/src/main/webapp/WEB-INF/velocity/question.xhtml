@@ -18,18 +18,21 @@ and open the template in the editor.
                         <h3>$question.title</h3>
                     </div>
                     <div class="votecell">
-                        <a href="">bagus</a>
-                        <h3>$question.totalVote</h3>
-                        <a href="">bapuk</a>
-                        <a href="">favorit</a>
+                        <a href="" class="vote-up"></a>
+                        <div class="vote-count">$question.totalVote</div>
+                        <a href="" class="vote-down"></a>
+                        <a href="" class="favourite"></a>
                     </div>
-                    <div>
+                    <div class="tags-group">
                         #foreach($tag in $question.tags)
-                            <div class="tags">
+                            <span class="tags">
                                 <a rel="tag" title="tampilkan pertanyaan yang ditandai '$tag.name'" class="post-tag" href="/q/tag/$tag.name">$tag.name</a> 
-                            </div>
+                            </span>
                         #end
-                        <div>
+                    </div>
+                    <br/>
+                    <div class="left">
+                        <div class="left">
                             <a href="/q/$question.id">tautan</a>
                             <a href="/report/q/$question.id">laporkan</a>
                         </div>
@@ -50,17 +53,17 @@ and open the template in the editor.
                     #foreach($answer in $question.answers)
                         #if($question.answer && $question.answer.id==$answer.id)
                         <div class="votecell">
-                            <a href="">bagus</a>
+                            <a href="" class="vote-up">bagus</a>
                             <h3>$question.answers.size</h3>
-                            <a href="">bapuk</a>
-                            <a href="">favorit</a>
+                            <a href="" class="vote-down">bapuk</a>
+                            <a href="" class="favourite">favorit</a>
                         </div>
                         #else
                         <div class="votecell">
-                            <a href="">bagus</a>
+                            <a href="" class="vote-up">bagus</a>
                             <h3>$question.answers.size</h3>
-                            <a href="">bapuk</a>
-                            <a href="">favorit</a>
+                            <a href="" class="vote-down">bapuk</a>
+                            <a href="" class="favourite">favorit</a>
                         </div>
                         #end
                         <div class="answer">$answer.answer</div>

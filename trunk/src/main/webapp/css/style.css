@@ -301,6 +301,11 @@ footer a:hover {
     float: left;
     line-height: 18px;
 }
+.tags-group{
+    margin-left: 22px;
+    float: left;
+    display: block;
+}
 a.post-tag {
     background-color: #E0EAF1;
     border-bottom: 1px solid #3E6D8E;
@@ -330,7 +335,7 @@ a.post-tag {
 /* css inside answer */
 .votecell {
     vertical-align: top;
-    width: 60px;
+    width: 22px;
 }
 .post-text {
     font-size: 107%;
@@ -338,6 +343,47 @@ a.post-tag {
     margin-bottom: 5px;
     margin-right: 5px;
     width: 660px;
+}
+.vote-up {
+    background-image: url("/images/icon.jpg");
+    background-position: -241px -103px;
+    display: block;
+    height: 23px;
+    margin: 0 auto;
+    width: 22px;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+.vote-down {
+    background-image: url("/images/icon.jpg");
+    background-position: -161px -103px;
+    display: block;
+    height: 23px;
+    margin: 0 auto;
+    width: 22px;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+a {
+    text-decoration: none;
+}
+.favourite {
+    background-image: url("/images/icon.jpg");
+    background-position: -240px -63px;
+    display: block;
+    height: 23px;
+    margin: 0 auto;
+    width: 22px;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+.vote-count{
+    font-weight: bold;
+    text-align: center;
+    font-size: 18px;
+}
+.left{
+    float: left;
 }
 /*Form css*/
 /* general reset area for this page */
