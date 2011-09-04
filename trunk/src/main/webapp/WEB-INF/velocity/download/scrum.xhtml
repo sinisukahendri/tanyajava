@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>Download Form</title>
+    </head>
+    <body>
+        <p>
+            <p>Menulis adalah kegiatan paling saya suka di sela-sela kesibukan sehari-hari. Menulis, terutama pengetahuan, akan memberikan efek berantai kepada seluruh pembacanya. Menulis juga membuka gerbang peradaban yang bernama Sejarah. Tidak ada sejarah tanpa budaya menulis.</p>
+            <p>Buku Scrum dan XP Secara Praktis oleh Henrik Kniberg ini adalah buku pertama yang saya terjemahkan. Isi dari buku ini berasal dari pengalaman Henrik menerapkan Scrum dan XP di perusahaan beliau bekerja selama bertahun-tahun. Seiring dengan waktu Henrik ingin menuangkan pengalamanya dalam sebuah catatan sederhana untuk dirinya sendiri, tetapi tanpa sengaja catatan tersebut berkembang menjadi sebuah buku yang kemudian diterbitkan oleh infoQ.</p>
+            <p>Harapan saya buku ini bisa memberikan pengetahuan yang berguna bagi karir maupun pekerjaan teman-teman pembaca. Terutama teman-teman yang ingin melanjutkan karir ke jenjang managerial setelah cukup pengalaman sebagai developer. Saya pernah mendapat "wejangan" dari salah satu kenalan saya yang sudah makan asam garam, beliau berpesan agar segerah mulai meniti jalur managerial sebelum berumur 30 tahun, buku ini adalah jalan saya menuju ke sana. Pengajar seperti guru SMK atau Dosen dapat menggunakan buku ini sebagai salah satu referensi mata kuliah Management Proyek Perangkat Lunak.</p>
+            <p><u><i>Buku ini akan selalu gratis untuk anda miliki dan sebarkan baik secara soft copy (ebook) maupun secara hard copy (print) tanpa modifkasi sama sekali. Jika anda ingin menggunakan buku ini untuk tujuan komersial dan memodifkasi sebagian isinya untuk tujuan tersebut, mohon mendiskusikan dengan saya secara formal.</i></u></p>
+            <p>Kalau anda dan institusi anda mendapatkan manfaat dari buku ini dan ingin berkontribusi balik, saya menerima donasi yang nantinya akan saya sumbangkan ke panti asuhan Permata Hati yang beralamatkan di :<br/>
+            <p>Jl. Roda No. 29, Kelurahan Babakan Pasar, Kecamatan Bogor Tengah, Bogor
+            <br/>Telepon: (0251) 8312 730. <br/>email : permatahatibogor@gmail.com <br/>url : <a href="http://permatahatibogor.wordpress.com">http://permatahatibogor.wordpress.com</a>, <a href="http://saveorphan.dagdigdug.com">http://saveorphan.dagdigdug.com</a></p>
+            <p>Kalau anda ingin berdiskusi lebih lanjut mengenai Scrum dan management pengembangan perangkat lunak secara keseluruhan, silahkan bergabung ke milis it-project-indonesia@googlegroups.com yang saya kelola bersama Endy Muhardin dari Artivisi Intermedia, atau silahkan juga bergabung ke milis scrum-indonesia@googlegroups.com yang dikelola oleh Joshua Partogi dari Scrum Way (scrumway.co)</p>    
+            <form action="" method="post" id="contact">
+                <table>
+                    <tr>
+                        <td>* Nama</td>
+                        <td><input type="text" name="name" value="$!download.name" size="40"/></td>
+                        <td>
+                          #springBind("download.name")
+                          #springShowErrors("<br/>" "")
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>* Email</td>
+                        <td><input type="text" name="email" value="$!download.email" size="40"/></td>
+                        <td>
+                          #springBind("download.email")
+                          #springShowErrors("<br/>" "")
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>* Konfirmasi Email</td>
+                        <td><input type="text" name="confirmEmail" value="$!download.confirmEmail" size="40"/></td>
+                        <td>
+                          #springBind("download.confirmEmail")
+                          #springShowErrors("<br/>" "")
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>* Blog/Linkedin/Facebook URL</td>
+                        <td><input type="text" name="blog" value="$!download.blog" size="60"/></td>
+                        <td>
+                          #springBind("download.blog")
+                          #springShowErrors("<br/>" "")
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>* Perusahaan/Instansi pendidikan</td>
+                        <td><input type="text" name="company" value="$!download.company" size="50"/></td>
+                        <td>
+                          #springBind("download.company")
+                          #springShowErrors("<br/>" "")
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>* Jumlah Team/Teman Sekelas</td>
+                        <td><input type="text" name="teamSize" value="$!download.teamSize" size="10"/></td>
+                        <td>
+                          #springBind("download.teamSize")
+                          #springShowErrors("<br/>" "")
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Nomor Telpon</td>
+                        <td><input type="text" name="phone" value="$!download.phone" size="40"/></td>
+                        <td>
+                          #springBind("download.phone")
+                          #springShowErrors("<br/>" "")
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>* Posisi</td>
+                        <td>
+                            <select name="companyRole" id="companyRole" class="shortened" >
+                                #foreach($companyRole in $companyRoles)
+                                #if($companyRole.companyRole.equals($download.companyRole))
+                                <option value="$companyRole.companyRole" selected>$companyRole.companyRole</option>
+                                #else
+                                <option value="$companyRole.companyRole">$companyRole.companyRole</option>
+                                #end
+                                #end
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>* Fase Project</td>
+                        <td>
+                            <select name="projectStage" id="companyRole" class="shortened" >
+                                #foreach($projectStage in $projectStages)
+                                #if($projectStage.projectStage.equals($download.projectStage))
+                                <option value="$projectStage.projectStage" selected>$projectStage.projectStage</option>
+                                #else
+                                <option value="$projectStage.projectStage">$projectStage.projectStage</option>
+                                #end
+                                #end
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><input type="checkbox" name="newsLetter" value="true" checked/> Bersedia menerima newsletter dan update</td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" name="submit" value="download"/></td>
+                    </tr>
+                </table>
+                </form>
+        </p>
+    </body>
+</html>

@@ -51,11 +51,12 @@ public class DownloadController {
         DownloadItem downloadItem = downloadService.getDownloadItem(id);
         if(downloadItem == null){
             //exception
+            return "/download/download_not_found";
         }
         model.addAttribute("content",downloadItem.getContent());
         model.addAttribute("title",downloadItem.getTitle());
         model.addAttribute(new Download());
-        return "/download/download";
+        return "/download/" + id;
     }
     
     @RequestMapping(value="/download/done", method=RequestMethod.GET)
@@ -82,7 +83,7 @@ public class DownloadController {
             
         } else if(result.hasErrors()){
             model.addAttribute("download", download);
-            return "/download/download";
+            return "/download/" + id;
         }
         return "redirect:/download/done";
     }
