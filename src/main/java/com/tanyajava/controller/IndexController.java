@@ -30,7 +30,7 @@ public class IndexController {
         //new badge user
         //trending
         model.addAttribute("questionList", questionService.getQuestion(0, 20));
-        return "/index";
+        return "/index_kosong";
     }
 
 }

@@ -23,5 +23,6 @@ public interface DownloadService {
     void update(Download download);
 
     DownloadItem getDownloadItem(String id);
+    
     List<DownloadItem> getDownloadItems();
 }
